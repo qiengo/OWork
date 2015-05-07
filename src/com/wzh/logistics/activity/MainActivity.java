@@ -27,7 +27,6 @@ public class MainActivity extends FragmentActivity {
 		fragmentList = new ArrayList<Fragment>();
 		fragmentList.add(new MainFragment());
 		fragmentList.add(new MyFragment());
-
 		mPager.setAdapter(new MyFragmentPagerAdapter(getSupportFragmentManager(), fragmentList));  
         mPager.setCurrentItem(0);//设置当前显示标签页为第一页  
 		
