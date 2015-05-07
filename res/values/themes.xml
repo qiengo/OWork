@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AppTheme" />
+
+    <style name="AppTheme.ActionBar" parent="@style/Theme.AppCompat.Light">
+        <item name="homeAsUpIndicator">@drawable/tb_icon_actionbar_back</item>
+        <item name="actionBarSize">@dimen/actionbar_height</item>
+        <item name="actionOverflowButtonStyle">@style/AppWidget.ActionBar.Overflow</item>
+        <item name="actionMenuTextAppearance">@style/AppWidget.ActionBar.Menu</item>
+    </style>
+
+    <style name="AppTheme.ActionBar.Translucent" parent="AppTheme.ActionBar">
+        <item name="actionBarStyle">@style/AppWidget.ActionBar.Transparent</item>
+        <item name="windowActionBarOverlay">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+
+</resources>

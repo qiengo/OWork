@@ -1,0 +1,41 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <style name="AppWidget" />
+
+    <!-- ActionBar Style. -->
+    <style name="AppWidget.ActionBar" />
+
+    <style name="AppWidget.ActionBar.Overflow" parent="@style/Widget.AppCompat.ActionButton.Overflow">
+        <item name="android:src">@drawable/tb_icon_actionbar_more</item>
+    </style>
+
+    <style name="AppWidget.ActionBar.Menu" parent="android:style/TextAppearance.Holo.Widget.ActionBar.Menu">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="AppWidget.ActionBar.Transparent" parent="@style/Widget.AppCompat.Light.ActionBar.Solid">
+        <item name="android:background">@android:color/transparent</item>
+        <item name="background">@android:color/transparent</item>
+    </style>
+    <!-- Button Style. -->
+    <style name="AppWidget.Button" parent="@android:style/Widget.Button" />
+
+    <style name="AppWidget.Button.Shakespeare">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:gravity">center</item>
+        <item name="android:shadowColor">#000000</item>
+        <item name="android:shadowDx">1</item>
+        <item name="android:shadowDy">1</item>
+        <item name="android:shadowRadius">0.6</item>
+        <item name="android:background">@drawable/selector_btn_bar_mid</item>
+    </style>
+
+    <style name="anim_popup_bottom_alpha">
+        <item name="android:windowEnterAnimation">@anim/slide_in_from_bottom_alpha</item>
+        <item name="android:windowExitAnimation">@anim/slide_out_to_bottom_alpha</item>
+    </style>
+
+</resources>
