@@ -8,6 +8,6 @@ public class HuodanDetailActivity extends ActionBarBaseActivity{
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_myhuodan);
+		setContentView(R.layout.activity_huodandetail);
 	}
 }
