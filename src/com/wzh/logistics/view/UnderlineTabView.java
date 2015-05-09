@@ -2,7 +2,10 @@ package com.wzh.logistics.view;
 
 import java.util.ArrayList;
 
+import com.wzh.logistics.R;
+
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -14,12 +17,13 @@ import android.view.View;
 import android.view.View.OnTouchListener;
 
 public class UnderlineTabView extends View implements OnTouchListener{
-	private Paint mBorderPaint, mTextPaint,mSelectedPaint;
+	private Paint mBorderPaint, mTextPaint,mSelTextPaint,mSelectedPaint;
 	private ArrayList<String> titleList;
 	private int underLineH=5;
 	private int curSelect=1;
 	private int viewWidth,unitWidth;
 	private OnChangeListener onChangeListener;
+	private int lineColor,selectColor;
 
 	public UnderlineTabView(Context context) {
 		this(context, null);
@@ -31,21 +35,26 @@ public class UnderlineTabView extends View implements OnTouchListener{
 
 	public UnderlineTabView(Context context, AttributeSet attrs, int defStyleAttr) {
 		super(context, attrs, defStyleAttr);
+		final Resources res = getResources();
+		lineColor=res.getColor(R.color.divider_gray);
+		selectColor=res.getColor(R.color.theme_blue);
 		titleList = new ArrayList<String>();
 		mBorderPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-		mBorderPaint.setColor(0xffff0ff0);
+		mBorderPaint.setColor(lineColor);
 		mBorderPaint.setStrokeWidth(2);
 
 		mTextPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-		mTextPaint.setColor(Color.WHITE);
-		// mTextPaint.setFakeBoldText(true);
 		mTextPaint.setTextSize(28);
 		mTextPaint.setColor(0xff000000);
+		mSelTextPaint= new Paint(Paint.ANTI_ALIAS_FLAG);
+		mSelTextPaint.setTextSize(28);
+		mSelTextPaint.setColor(selectColor);
 		
 		mSelectedPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-		mSelectedPaint.setColor(0xffff0fff);
+		mSelectedPaint.setColor(selectColor);
 		mSelectedPaint.setStyle(Style.FILL);
 		setOnTouchListener(this);
+		
 
 		addTitle("未确认货单");
 		addTitle("进行中货单");
@@ -68,7 +77,11 @@ public class UnderlineTabView extends View implements OnTouchListener{
 			float textW = mTextPaint.measureText(title);
 			float startX = (unitWidth - textW) * 0.5f;
 			int baseline = getTextBaseLine(mTextPaint,0,height);
-			canvas.drawText(title, unitWidth * i + startX, baseline, mTextPaint);
+			if(i==curSelect){
+				canvas.drawText(title, unitWidth * i + startX, baseline, mSelTextPaint);
+			}else{
+				canvas.drawText(title, unitWidth * i + startX, baseline, mTextPaint);
+			}
 		}
 		canvas.drawRect(unitWidth*curSelect, height-underLineH, unitWidth*curSelect+unitWidth, height, mSelectedPaint);
 	}
