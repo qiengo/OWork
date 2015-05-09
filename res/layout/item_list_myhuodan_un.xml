@@ -22,7 +22,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/bg_border_red"
-            android:padding="2dp"
             android:text="正在取货"
             android:textColor="@color/theme_red"
             android:textSize="12sp" />
@@ -58,7 +57,6 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:background="@drawable/bg_border_red"
-            android:padding="2dp"
             android:text="高栏车"
             android:textColor="@color/theme_red"
             android:textSize="10sp" />
@@ -72,8 +70,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:gravity="center_vertical"
+        android:orientation="horizontal"
         android:padding="5dp" >
 
         <ImageView
@@ -92,8 +90,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:gravity="center_vertical"
+        android:orientation="horizontal"
         android:padding="5dp" >
 
         <ImageView
@@ -112,19 +110,20 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:gravity="center_vertical"
+        android:orientation="horizontal"
         android:padding="5dp" >
 
         <ImageView
             android:layout_width="14dp"
             android:layout_height="14dp"
             android:src="@drawable/ic_huodan_owner" />
-        <TextView
+
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="山东省某某物流园"
             android:layout_marginLeft="5dp"
+            android:text="山东省某某物流园"
             android:textColor="@color/text_gray" />
     </LinearLayout>
 
@@ -135,20 +134,32 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="35dp"
         android:gravity="center_horizontal"
         android:orientation="horizontal"
-        android:padding="2dp" >
+        android:padding="5dp" >
 
-        <ImageView
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:src="@drawable/ic_huodan_call" />
-        <TextView
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="15863432597"
-            android:textSize="20sp" />
+            android:layout_height="match_parent"
+            android:background="@drawable/bg_btn_retg_blue"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp" >
+
+            <ImageView
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:src="@drawable/ic_huodan_call" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="15863432597"
+                android:textColor="#fff"
+                android:textSize="14sp" />
+        </LinearLayout>
     </LinearLayout>
 
     <View

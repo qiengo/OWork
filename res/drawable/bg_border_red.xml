@@ -5,7 +5,14 @@
     <stroke
         android:width="0.7dip"
         android:color="@color/theme_red" />
+    <solid android:color="#fff"/>
 
     <corners android:radius="3dp" />
+
+    <padding
+        android:left="3dp"
+        android:right="3dp" 
+        android:top="2dp"
+        android:bottom="2dp"/>
 
 </shape>

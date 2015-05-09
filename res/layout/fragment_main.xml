@@ -12,7 +12,7 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="281dp"
+        android:layout_height="241dp"
         android:background="#fff" >
 
         <LinearLayout
@@ -23,7 +23,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="140dp"
+                android:layout_height="120dp"
                 android:gravity="bottom"
                 android:orientation="horizontal"
                 android:weightSum="2" >
@@ -95,7 +95,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="140dp"
+                android:layout_height="120dp"
                 android:gravity="top"
                 android:orientation="horizontal"
                 android:weightSum="2" >
