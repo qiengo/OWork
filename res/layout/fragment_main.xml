@@ -8,7 +8,7 @@
         android:id="@+id/iv_ads"
         android:layout_width="match_parent"
         android:layout_height="180dp"
-        android:background="#f00" />
+        android:src="@drawable/img_header"/>
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -57,7 +57,7 @@
 
                 <View
                     android:layout_width="1dp"
-                    android:layout_height="80dp"
+                    android:layout_height="90dp"
                     android:background="#5000" />
 
                 <RelativeLayout
@@ -89,7 +89,7 @@
             </LinearLayout>
 
             <View
-                android:layout_width="160dp"
+                android:layout_width="180dp"
                 android:layout_height="1dp"
                 android:background="#5000" />
 
@@ -128,7 +128,7 @@
 
                 <View
                     android:layout_width="1dp"
-                    android:layout_height="80dp"
+                    android:layout_height="90dp"
                     android:background="#5000" />
 
                 <RelativeLayout
@@ -161,10 +161,10 @@
 
         <Button
             android:id="@+id/btn_main_jiehuo"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
             android:layout_gravity="center"
-            android:background="#0ff"
+            android:background="@drawable/bg_btn_main_jiehuo"
             android:text="我要接活"
             android:textColor="#000"
             android:textSize="16sp" />
