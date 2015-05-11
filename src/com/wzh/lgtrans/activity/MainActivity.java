@@ -11,10 +11,10 @@ import android.support.v4.view.ViewPager;
 
 import com.wzh.lgtrans.R;
 import com.wzh.lgtrans.fragment.MainFragment;
+import com.wzh.lgtrans.fragment.MoreFragment;
 import com.wzh.lgtrans.fragment.MyFragment;
 
 public class MainActivity extends FragmentActivity {
-	private static final String TAG = "MainActivity";
 	private ViewPager mPager;
 	private ArrayList<Fragment> fragmentList;
 
@@ -22,16 +22,14 @@ public class MainActivity extends FragmentActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_mian);
-
-//		ActionBar actionBar = getSupportActionBar();
-//		actionBar.hide();
 		
 		mPager = (ViewPager) findViewById(R.id.vpg_main);
 		fragmentList = new ArrayList<Fragment>();
+		fragmentList.add(new MoreFragment());
 		fragmentList.add(new MainFragment());
 		fragmentList.add(new MyFragment());
 		mPager.setAdapter(new MyFragmentPagerAdapter(getSupportFragmentManager(), fragmentList));  
-        mPager.setCurrentItem(0);//设置当前显示标签页为第一页  
+        mPager.setCurrentItem(1);//设置当前显示标签页为第一页  
 		
 	}
 

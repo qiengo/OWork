@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 
 import com.wzh.lgtrans.R;
 import com.wzh.lgtrans.activity.MyHuodanActivity;
+import com.wzh.lgtrans.activity.Register0Activity;
 
 /**
  * 购物车界面的fragment
@@ -56,6 +57,14 @@ public class MainFragment extends Fragment {
 			@Override
 			public void onClick(View v) {
 				Log.i(TAG, "clicked jiehuo");
+			}
+		});
+		mainView.findViewById(R.id.lay_lin_invite).setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				Intent intent=new Intent(ctx, Register0Activity.class);
+				ctx.startActivity(intent);
 			}
 		});
 
