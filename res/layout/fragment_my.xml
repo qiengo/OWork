@@ -50,6 +50,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/lay_lin_myinfo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
@@ -57,8 +58,8 @@
         android:padding="10dp" >
 
         <ImageView
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:src="@drawable/ic_my_avatar" />
 
         <LinearLayout
@@ -86,8 +87,8 @@
         </LinearLayout>
 
         <ImageView
-            android:layout_width="13dp"
-            android:layout_height="24dp"
+            android:layout_width="8dp"
+            android:layout_height="15dp"
             android:src="@drawable/ic_arrow_r" />
     </LinearLayout>
 
@@ -119,12 +120,12 @@
                 <ImageView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:src="@drawable/ic_btn_kongche" />
+                    android:src="@drawable/ic_btn_dingdan" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="空车上报"
+                    android:text="历史订单"
                     android:textColor="#000"
                     android:textSize="16sp" />
             </LinearLayout>
@@ -145,12 +146,12 @@
                 <ImageView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:src="@drawable/ic_btn_weizhang" />
+                    android:src="@drawable/ic_btn_yaoqing" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="违章查询"
+                    android:text="邀请好友"
                     android:textColor="#000"
                     android:textSize="16sp" />
             </LinearLayout>
@@ -171,12 +172,12 @@
                 <ImageView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:src="@drawable/ic_btn_weizhang" />
+                    android:src="@drawable/ic_btn_chexian" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="违章查询"
+                    android:text="我的车险"
                     android:textColor="#000"
                     android:textSize="16sp" />
             </LinearLayout>
@@ -203,12 +204,12 @@
                 <ImageView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:src="@drawable/ic_btn_yaoqing" />
+                    android:src="@drawable/ic_btn_version" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="邀请朋友 "
+                    android:text="检查更新 "
                     android:textColor="#000"
                     android:textSize="16sp" />
             </LinearLayout>
@@ -228,12 +229,12 @@
                 <ImageView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:src="@drawable/ic_btn_chexian" />
+                    android:src="@drawable/ic_btn_about" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="我的车险"
+                    android:text="关于我们"
                     android:textColor="#000"
                     android:textSize="16sp" />
             </LinearLayout>

@@ -21,7 +21,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.wzh.lgtrans.activity.SubActivity"/>
+            android:name="com.wzh.lgtrans.activity.MyInfoActivity"/>
         <activity
             android:name="com.wzh.lgtrans.activity.MyHuodanActivity"/>
         <activity

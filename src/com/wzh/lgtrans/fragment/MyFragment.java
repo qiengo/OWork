@@ -2,6 +2,7 @@ package com.wzh.lgtrans.fragment;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.wzh.lgtrans.R;
+import com.wzh.lgtrans.activity.MyInfoActivity;
 
 /**
  * 购物车界面的fragment
@@ -40,6 +42,14 @@ public class MyFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View mainView = mInflater.inflate(R.layout.fragment_my, container, false);
+		mainView.findViewById(R.id.lay_lin_myinfo).setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent intent=new Intent(ctx, MyInfoActivity.class);
+				ctx.startActivity(intent);
+			}
+		});
 		return mainView;
 	}
 
