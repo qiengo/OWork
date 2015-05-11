@@ -6,6 +6,7 @@
     <color name="theme_blue">#01478f</color>
     <color name="theme_red">#ff1031</color>
     <color name="divider_gray">#c1c1c1</color>
+    <color name="divider_light_gray">#c1c1c1</color>
     <color name="btn_blue">#00b7ee</color>
     
     <color name="selector_fore_default">#ffbbbbbb</color>

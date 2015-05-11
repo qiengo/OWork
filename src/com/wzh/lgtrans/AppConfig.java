@@ -1,4 +1,6 @@
-package com.wzh.logistics;
+package com.wzh.lgtrans;
+
+import com.wzh.logistics.BuildConfig;
 
 import android.content.Context;
 import android.content.res.Resources;

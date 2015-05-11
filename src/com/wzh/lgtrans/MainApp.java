@@ -1,5 +1,5 @@
 
-package com.wzh.logistics;
+package com.wzh.lgtrans;
 import android.app.Application;
 import android.content.Context;
 

@@ -1,4 +1,4 @@
-package com.wzh.logistics.activity;
+package com.wzh.lgtrans.activity;
 
 import java.util.ArrayList;
 
@@ -8,10 +8,11 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBar;
 
+import com.wzh.lgtrans.fragment.MainFragment;
+import com.wzh.lgtrans.fragment.MyFragment;
 import com.wzh.logistics.R;
-import com.wzh.logistics.fragment.MainFragment;
-import com.wzh.logistics.fragment.MyFragment;
 
 public class MainActivity extends FragmentActivity {
 	private static final String TAG = "MainActivity";
@@ -23,6 +24,9 @@ public class MainActivity extends FragmentActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_mian);
 
+//		ActionBar actionBar = getSupportActionBar();
+//		actionBar.hide();
+		
 		mPager = (ViewPager) findViewById(R.id.vpg_main);
 		fragmentList = new ArrayList<Fragment>();
 		fragmentList.add(new MainFragment());

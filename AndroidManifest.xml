@@ -8,27 +8,24 @@
         android:targetSdkVersion="21" />
 
     <application
-        android:name=".MainApp"
+        android:name="com.wzh.lgtrans.MainApp"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
-        android:label="@string/app_name" >
+        android:label="@string/app_name" 
+        android:theme="@style/AppTheme.ActionBar">
         <activity
-            android:name=".activity.MainActivity"
-            android:theme="@style/AppTheme.ActionBar" >
+            android:name="com.wzh.lgtrans.activity.MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".activity.SubActivity"
-            android:theme="@style/AppTheme.ActionBar" />
+            android:name="com.wzh.lgtrans.activity.SubActivity"/>
         <activity
-            android:name=".activity.MyHuodanActivity"
-            android:theme="@style/AppTheme.ActionBar" />
+            android:name="com.wzh.lgtrans.activity.MyHuodanActivity"/>
         <activity
-            android:name=".activity.HuodanDetailActivity"
-            android:theme="@style/AppTheme.ActionBar" />
+            android:name="com.wzh.lgtrans.activity.HuodanDetailActivity"/>
     </application>
 
 </manifest>

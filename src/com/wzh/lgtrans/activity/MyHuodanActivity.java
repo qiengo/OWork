@@ -1,4 +1,4 @@
-package com.wzh.logistics.activity;
+package com.wzh.lgtrans.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,8 +7,8 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
+import com.wzh.lgtrans.adapter.HuodanAdapter;
 import com.wzh.logistics.R;
-import com.wzh.logistics.adapter.HuodanAdapter;
 
 public class MyHuodanActivity extends ActionBarBaseActivity{
 	private ListView listView;

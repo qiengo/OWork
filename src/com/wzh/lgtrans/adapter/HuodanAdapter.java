@@ -1,4 +1,4 @@
-package com.wzh.logistics.adapter;
+package com.wzh.lgtrans.adapter;
 
 import com.wzh.logistics.R;
 

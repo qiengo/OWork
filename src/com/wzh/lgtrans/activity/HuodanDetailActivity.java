@@ -1,4 +1,4 @@
-package com.wzh.logistics.activity;
+package com.wzh.lgtrans.activity;
 
 import android.os.Bundle;
 

@@ -1,4 +1,4 @@
-package com.wzh.logistics.view;
+package com.wzh.lgtrans.view;
 
 import java.util.ArrayList;
 
