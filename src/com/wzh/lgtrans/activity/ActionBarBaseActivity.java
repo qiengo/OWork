@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.wzh.logistics.R;
+import com.wzh.lgtrans.R;
 
 /**
  * ActionBar基础activity，进行统一的属性设置。<br>

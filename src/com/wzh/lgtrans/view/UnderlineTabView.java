@@ -2,12 +2,9 @@ package com.wzh.lgtrans.view;
 
 import java.util.ArrayList;
 
-import com.wzh.logistics.R;
-
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Paint.FontMetricsInt;
 import android.graphics.Paint.Style;
@@ -15,6 +12,8 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
+
+import com.wzh.lgtrans.R;
 
 public class UnderlineTabView extends View implements OnTouchListener{
 	private Paint mBorderPaint, mTextPaint,mSelTextPaint,mSelectedPaint;

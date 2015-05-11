@@ -10,8 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.wzh.lgtrans.R;
 import com.wzh.lgtrans.activity.MyHuodanActivity;
-import com.wzh.logistics.R;
 
 /**
  * 购物车界面的fragment

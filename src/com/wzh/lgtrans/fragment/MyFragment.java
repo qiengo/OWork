@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.wzh.logistics.R;
+import com.wzh.lgtrans.R;
 
 /**
  * 购物车界面的fragment

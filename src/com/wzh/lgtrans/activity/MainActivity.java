@@ -8,11 +8,10 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.ActionBar;
 
+import com.wzh.lgtrans.R;
 import com.wzh.lgtrans.fragment.MainFragment;
 import com.wzh.lgtrans.fragment.MyFragment;
-import com.wzh.logistics.R;
 
 public class MainActivity extends FragmentActivity {
 	private static final String TAG = "MainActivity";

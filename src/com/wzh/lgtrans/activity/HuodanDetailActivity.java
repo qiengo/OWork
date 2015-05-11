@@ -2,7 +2,7 @@ package com.wzh.lgtrans.activity;
 
 import android.os.Bundle;
 
-import com.wzh.logistics.R;
+import com.wzh.lgtrans.R;
 
 public class HuodanDetailActivity extends ActionBarBaseActivity{
 	@Override
