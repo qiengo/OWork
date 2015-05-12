@@ -29,6 +29,12 @@
             android:name="com.wzh.lgtrans.activity.HuodanDetailActivity"/>
         <activity
             android:name="com.wzh.lgtrans.activity.Register0Activity"/>
+        <activity
+            android:name="com.wzh.lgtrans.activity.Register1Activity"/>
+        <activity
+            android:name="com.wzh.lgtrans.activity.Register2Activity"/>
+        <activity
+            android:name="com.wzh.lgtrans.activity.Register3Activity"/>
     </application>
 
 </manifest>
