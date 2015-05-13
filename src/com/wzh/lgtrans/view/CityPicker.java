@@ -21,7 +21,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.wzh.lgtrans.R;
 import com.wzh.lgtrans.util.FileUtil;
-import com.wzh.lgtrans.view.ScrollerNumberPicker.OnSelectListener;
+import com.wzh.lgtrans.view.ScrollerPicker.OnSelectListener;
 
 /**
  * 城市Picker
@@ -31,9 +31,9 @@ import com.wzh.lgtrans.view.ScrollerNumberPicker.OnSelectListener;
  */
 public class CityPicker extends LinearLayout {
 	/** 滑动控件 */
-	private ScrollerNumberPicker provincePicker;
-	private ScrollerNumberPicker cityPicker;
-	private ScrollerNumberPicker counyPicker;
+	private ScrollerPicker provincePicker;
+	private ScrollerPicker cityPicker;
+	private ScrollerPicker counyPicker;
 	/** 选择监听 */
 	private OnSelectingListener onSelectingListener;
 	/** 刷新界面 */
@@ -138,13 +138,13 @@ public class CityPicker extends LinearLayout {
 	@Override
 	protected void onFinishInflate() {
 		super.onFinishInflate();
-		LayoutInflater.from(getContext()).inflate(R.layout.city_picker, this);
+		LayoutInflater.from(getContext()).inflate(R.layout.lay_city_picker, this);
 		citycodeUtil = CitycodeUtil.getSingleton();
 		// 获取控件引用
-		provincePicker = (ScrollerNumberPicker) findViewById(R.id.province);
+		provincePicker = (ScrollerPicker) findViewById(R.id.province);
 
-		cityPicker = (ScrollerNumberPicker) findViewById(R.id.city);
-		counyPicker = (ScrollerNumberPicker) findViewById(R.id.couny);
+		cityPicker = (ScrollerPicker) findViewById(R.id.city);
+		counyPicker = (ScrollerPicker) findViewById(R.id.couny);
 		provincePicker.setData(citycodeUtil.getProvince(province_list));
 		provincePicker.setDefault(1);
 		cityPicker.setData(citycodeUtil.getCity(city_map, citycodeUtil

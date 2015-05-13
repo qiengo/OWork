@@ -37,6 +37,8 @@
             android:name="com.wzh.lgtrans.activity.Register2Activity"/>
         <activity
             android:name="com.wzh.lgtrans.activity.Register3Activity"/>
+        <activity
+            android:name="com.wzh.lgtrans.activity.TestActivity"/>
     </application>
 
 </manifest>

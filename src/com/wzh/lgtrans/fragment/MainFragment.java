@@ -13,6 +13,7 @@ import com.wzh.lgtrans.R;
 import com.wzh.lgtrans.activity.JieHuoActivity;
 import com.wzh.lgtrans.activity.MyHuodanActivity;
 import com.wzh.lgtrans.activity.Register1Activity;
+import com.wzh.lgtrans.activity.TestActivity;
 
 /**
  * 购物车界面的fragment
@@ -65,6 +66,14 @@ public class MainFragment extends Fragment {
 			@Override
 			public void onClick(View v) {
 				Intent intent=new Intent(ctx, Register1Activity.class);
+				ctx.startActivity(intent);
+			}
+		});
+		mainView.findViewById(R.id.lay_lin_chexian).setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				Intent intent=new Intent(ctx, TestActivity.class);
 				ctx.startActivity(intent);
 			}
 		});

@@ -21,7 +21,7 @@ import com.wzh.lgtrans.R;
 /**
  * 滑动选择
  */
-public class ScrollerNumberPicker extends View {
+public class ScrollerPicker extends View {
 	/** 控件宽度 */
 	private float controlWidth;
 	/** 控件高度 */
@@ -29,7 +29,7 @@ public class ScrollerNumberPicker extends View {
 	/** 是否滑动中 */
 	private boolean isScrolling = false;
 	/** 选择的内容 */
-	private ArrayList<ItemObject> itemList = new ArrayList<ScrollerNumberPicker.ItemObject>();
+	private ArrayList<ItemObject> itemList = new ArrayList<ScrollerPicker.ItemObject>();
 	/** 设置数据 */
 	private ArrayList<String> dataList = new ArrayList<String>();
 	/** 按下的坐标 */
@@ -72,19 +72,19 @@ public class ScrollerNumberPicker extends View {
 	/** 正在修改数据，避免ConcurrentModificationException异常 */
 	private boolean isClearing = false;
 
-	public ScrollerNumberPicker(Context context, AttributeSet attrs,int defStyle) {
+	public ScrollerPicker(Context context, AttributeSet attrs,int defStyle) {
 		super(context, attrs, defStyle);
 		init(context, attrs);
 		initData();
 	}
 
-	public ScrollerNumberPicker(Context context, AttributeSet attrs) {
+	public ScrollerPicker(Context context, AttributeSet attrs) {
 		super(context, attrs);
 		init(context, attrs);
 		initData();
 	}
 
-	public ScrollerNumberPicker(Context context) {
+	public ScrollerPicker(Context context) {
 		super(context);
 		initData();
 	}
