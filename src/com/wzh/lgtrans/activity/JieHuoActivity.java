@@ -9,20 +9,21 @@ import android.widget.ListView;
 
 import com.wzh.lgtrans.R;
 import com.wzh.lgtrans.adapter.HuodanAdapter;
+import com.wzh.lgtrans.adapter.JieHuoAdapter;
 
 public class JieHuoActivity extends ActionBarBaseActivity{
 	private ListView listView;
-	private HuodanAdapter huodanAdapter;
+	private JieHuoAdapter jiehuoAdapter;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_myhuodan);
-		setActionBarTitel("我的货单");
+		setContentView(R.layout.activity_jiehuo);
+		setActionBarTitel("我要接活");
 		
-		huodanAdapter=new HuodanAdapter(this);
+		jiehuoAdapter=new JieHuoAdapter(this);
 		listView=(ListView)findViewById(R.id.list_myhuodan);
-		listView.setAdapter(huodanAdapter);
+		listView.setAdapter(jiehuoAdapter);
 		listView.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override

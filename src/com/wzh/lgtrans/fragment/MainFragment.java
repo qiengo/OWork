@@ -5,12 +5,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.wzh.lgtrans.R;
+import com.wzh.lgtrans.activity.JieHuoActivity;
 import com.wzh.lgtrans.activity.MyHuodanActivity;
 import com.wzh.lgtrans.activity.Register1Activity;
 
@@ -56,7 +56,8 @@ public class MainFragment extends Fragment {
 
 			@Override
 			public void onClick(View v) {
-				Log.i(TAG, "clicked jiehuo");
+				Intent intent=new Intent(ctx, JieHuoActivity.class);
+				ctx.startActivity(intent);
 			}
 		});
 		mainView.findViewById(R.id.lay_lin_invite).setOnClickListener(new View.OnClickListener() {
