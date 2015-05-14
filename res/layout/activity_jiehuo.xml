@@ -14,6 +14,7 @@
         android:weightSum="2" >
 
         <LinearLayout
+            android:id="@+id/lay_lin_jiehuo_poss"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -23,7 +24,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="始发地" />
+                android:text="始发地"
+                android:textSize="16sp" />
 
             <ImageView
                 android:layout_width="15dp"
@@ -37,6 +39,7 @@
             android:src="@drawable/ic_jiehuo_link" />
 
         <LinearLayout
+            android:id="@+id/lay_lin_jiehuo_pose"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -46,7 +49,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="目的地" />
+                android:text="目的地"
+                android:textSize="16sp" />
 
             <ImageView
                 android:layout_width="15dp"

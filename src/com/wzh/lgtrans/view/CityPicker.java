@@ -43,14 +43,14 @@ public class CityPicker extends LinearLayout {
 	private int temCityIndex = -1;
 	private int tempCounyIndex = -1;
 	private Context context;
-	private List<Cityinfo> province_list = new ArrayList<Cityinfo>();
-	private HashMap<String, List<Cityinfo>> city_map = new HashMap<String, List<Cityinfo>>();
-	private HashMap<String, List<Cityinfo>> couny_map = new HashMap<String, List<Cityinfo>>();
+	private List<CityInfo> province_list = new ArrayList<CityInfo>();
+	private HashMap<String, List<CityInfo>> city_map = new HashMap<String, List<CityInfo>>();
+	private HashMap<String, List<CityInfo>> couny_map = new HashMap<String, List<CityInfo>>();
 	private static ArrayList<String> province_list_code = new ArrayList<String>();
 	private static ArrayList<String> city_list_code = new ArrayList<String>();
 	private static ArrayList<String> couny_list_code = new ArrayList<String>();
 
-	private CitycodeUtil citycodeUtil;
+	private CityUtil citycodeUtil;
 	private String city_code_string;
 	private String city_string;
 
@@ -87,8 +87,8 @@ public class CityPicker extends LinearLayout {
 		public ArrayList<String> province_list_code = new ArrayList<String>();
 		public ArrayList<String> city_list_code = new ArrayList<String>();
 
-		public List<Cityinfo> getJSONParserResult(String JSONString, String key) {
-			List<Cityinfo> list = new ArrayList<Cityinfo>();
+		public List<CityInfo> getJSONParserResult(String JSONString, String key) {
+			List<CityInfo> list = new ArrayList<CityInfo>();
 			JsonObject result = new JsonParser().parse(JSONString)
 					.getAsJsonObject().getAsJsonObject(key);
 
@@ -96,7 +96,7 @@ public class CityPicker extends LinearLayout {
 			while (iterator.hasNext()) {
 				Map.Entry<String, JsonElement> entry = (Entry<String, JsonElement>) iterator
 						.next();
-				Cityinfo cityinfo = new Cityinfo();
+				CityInfo cityinfo = new CityInfo();
 
 				cityinfo.setCity_name(entry.getValue().getAsString());
 				cityinfo.setId(entry.getKey());
@@ -107,9 +107,9 @@ public class CityPicker extends LinearLayout {
 			return list;
 		}
 
-		public HashMap<String, List<Cityinfo>> getJSONParserResultArray(
+		public HashMap<String, List<CityInfo>> getJSONParserResultArray(
 				String JSONString, String key) {
-			HashMap<String, List<Cityinfo>> hashMap = new HashMap<String, List<Cityinfo>>();
+			HashMap<String, List<CityInfo>> hashMap = new HashMap<String, List<CityInfo>>();
 			JsonObject result = new JsonParser().parse(JSONString)
 					.getAsJsonObject().getAsJsonObject(key);
 
@@ -117,10 +117,10 @@ public class CityPicker extends LinearLayout {
 			while (iterator.hasNext()) {
 				Map.Entry<String, JsonElement> entry = (Entry<String, JsonElement>) iterator
 						.next();
-				List<Cityinfo> list = new ArrayList<Cityinfo>();
+				List<CityInfo> list = new ArrayList<CityInfo>();
 				JsonArray array = entry.getValue().getAsJsonArray();
 				for (int i = 0; i < array.size(); i++) {
-					Cityinfo cityinfo = new Cityinfo();
+					CityInfo cityinfo = new CityInfo();
 					cityinfo.setCity_name(array.get(i).getAsJsonArray().get(0)
 							.getAsString());
 					cityinfo.setId(array.get(i).getAsJsonArray().get(1)
@@ -139,7 +139,7 @@ public class CityPicker extends LinearLayout {
 	protected void onFinishInflate() {
 		super.onFinishInflate();
 		LayoutInflater.from(getContext()).inflate(R.layout.lay_city_picker, this);
-		citycodeUtil = CitycodeUtil.getSingleton();
+		citycodeUtil = CityUtil.getSingleton();
 		// 获取控件引用
 		provincePicker = (ScrollerPicker) findViewById(R.id.province);
 

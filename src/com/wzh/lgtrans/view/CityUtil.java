@@ -11,7 +11,7 @@ import java.util.List;
  * @author zd
  * 
  */
-public class CitycodeUtil {
+public class CityUtil {
 
 	private ArrayList<String> province_list = new ArrayList<String>();
 	private ArrayList<String> city_list = new ArrayList<String>();
@@ -20,9 +20,9 @@ public class CitycodeUtil {
 	public ArrayList<String> city_list_code = new ArrayList<String>();
 	public ArrayList<String> couny_list_code = new ArrayList<String>();
 	/** 单例 */
-	public static CitycodeUtil model;
+	public static CityUtil model;
 
-	private CitycodeUtil() {}
+	private CityUtil() {}
 
 	public ArrayList<String> getProvince_list_code() {
 		return province_list_code;
@@ -54,14 +54,14 @@ public class CitycodeUtil {
 	 * 
 	 * @return
 	 */
-	public static CitycodeUtil getSingleton() {
+	public static CityUtil getSingleton() {
 		if (null == model) {
-			model = new CitycodeUtil();
+			model = new CityUtil();
 		}
 		return model;
 	}
 
-	public ArrayList<String> getProvince(List<Cityinfo> provice) {
+	public ArrayList<String> getProvince(List<CityInfo> provice) {
 		if (province_list_code.size() > 0) {
 			province_list_code.clear();
 		}
@@ -77,14 +77,14 @@ public class CitycodeUtil {
 	}
 
 	public ArrayList<String> getCity(
-			HashMap<String, List<Cityinfo>> cityHashMap, String provicecode) {
+			HashMap<String, List<CityInfo>> cityHashMap, String provicecode) {
 		if (city_list_code.size() > 0) {
 			city_list_code.clear();
 		}
 		if (city_list.size() > 0) {
 			city_list.clear();
 		}
-		List<Cityinfo> city = new ArrayList<Cityinfo>();
+		List<CityInfo> city = new ArrayList<CityInfo>();
 		city = cityHashMap.get(provicecode);
 		System.out.println("city--->" + city.toString());
 		for (int i = 0; i < city.size(); i++) {
@@ -96,7 +96,7 @@ public class CitycodeUtil {
 	}
 
 	public ArrayList<String> getCouny(
-			HashMap<String, List<Cityinfo>> cityHashMap, String citycode) {
+			HashMap<String, List<CityInfo>> cityHashMap, String citycode) {
 //		List<Cityinfo> couny = null;
 		if (couny_list_code.size() > 0) {
 			couny_list_code.clear();
@@ -109,7 +109,7 @@ public class CitycodeUtil {
 //		} else {
 //			couny.clear();
 //		}
-		List<Cityinfo> couny = cityHashMap.get(citycode);
+		List<CityInfo> couny = cityHashMap.get(citycode);
 		for (int i = 0; i < couny.size(); i++) {
 			couny_list.add(couny.get(i).getCity_name());
 			couny_list_code.add(couny.get(i).getId());

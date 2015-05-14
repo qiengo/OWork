@@ -2,8 +2,9 @@ package com.wzh.lgtrans.view;
 
 import java.io.Serializable;
 
-public class Cityinfo implements Serializable {
+public class CityInfo implements Serializable {
 
+	private static final long serialVersionUID = -6731710204306064796L;
 	private String id;
 	private String city_name;
 
