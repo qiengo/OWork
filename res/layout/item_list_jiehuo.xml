@@ -155,6 +155,7 @@
             android:orientation="vertical" >
 
             <TextView
+                android:id="@+id/tv_item_jiehuo_qiang"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:text="抢"

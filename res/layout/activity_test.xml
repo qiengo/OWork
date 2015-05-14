@@ -5,12 +5,12 @@
     android:orientation="vertical"
     android:gravity="center_horizontal" >
 
-    <com.wzh.lgtrans.view.CityPicker
+    <com.wzh.lgtrans.view.LocatePicker
         android:id="@+id/citypicker"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center" >
-    </com.wzh.lgtrans.view.CityPicker>
+    </com.wzh.lgtrans.view.LocatePicker>
 
     <Button
         android:layout_width="wrap_content"

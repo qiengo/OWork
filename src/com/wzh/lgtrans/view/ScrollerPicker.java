@@ -31,7 +31,8 @@ public class ScrollerPicker extends View {
 	/** 选择的内容 */
 	private ArrayList<ItemObject> itemList = new ArrayList<ScrollerPicker.ItemObject>();
 	/** 设置数据 */
-	private ArrayList<String> dataList = new ArrayList<String>();
+//	private ArrayList<String> dataList = new ArrayList<String>();
+	private ScrollerAdapter scrollerAdapter=null;
 	/** 按下的坐标 */
 	private int downY;
 	/** 按下的时间 */
@@ -68,11 +69,11 @@ public class ScrollerPicker extends View {
 	private static final int MOVE_NUMBER = 5;
 	/** 是否允许选空 */
 	private boolean noEmpty = false;
-	
+
 	/** 正在修改数据，避免ConcurrentModificationException异常 */
 	private boolean isClearing = false;
 
-	public ScrollerPicker(Context context, AttributeSet attrs,int defStyle) {
+	public ScrollerPicker(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);
 		init(context, attrs);
 		initData();
@@ -126,7 +127,7 @@ public class ScrollerPicker extends View {
 	@Override
 	protected void onDraw(Canvas canvas) {
 		super.onDraw(canvas);
-//		canvas.drawColor(0xffff0000);
+		// canvas.drawColor(0xffff0000);
 		drawLine(canvas);
 		drawList(canvas);
 		drawMask(canvas);
@@ -139,11 +140,12 @@ public class ScrollerPicker extends View {
 			for (ItemObject itemObject : itemList) {
 				itemObject.drawSelf(canvas);
 			}
-		} catch (Exception e) {}
+		} catch (Exception e) {
+		}
 	}
 
 	@Override
-	protected void onLayout(boolean changed, int left, int top, int right,int bottom) {
+	protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
 		super.onLayout(changed, left, top, right, bottom);
 	}
 
@@ -198,8 +200,7 @@ public class ScrollerPicker extends View {
 		if (move < 0) {
 			defaultMove(move);
 		} else {
-			defaultMove((int) itemList.get(itemList.size() - 1)
-					.moveToSelected());
+			defaultMove((int) itemList.get(itemList.size() - 1).moveToSelected());
 		}
 		for (ItemObject item : itemList) {
 			if (item.isSelected()) {
@@ -216,13 +217,15 @@ public class ScrollerPicker extends View {
 	private void initData() {
 		isClearing = true;
 		itemList.clear();
-		for (int i = 0; i < dataList.size(); i++) {
-			ItemObject itmItemObject = new ItemObject();
-			itmItemObject.id = i;
-			itmItemObject.itemText = dataList.get(i);
-			itmItemObject.x = 0;
-			itmItemObject.y = i * unitHeight;
-			itemList.add(itmItemObject);
+		if(scrollerAdapter!=null){
+			for (int i = 0; i < scrollerAdapter.getSize(); i++) {
+				ItemObject itmItemObject = new ItemObject();
+				itmItemObject.id = i;
+				itmItemObject.itemText = scrollerAdapter.getContent(i);
+				itmItemObject.x = 0;
+				itmItemObject.y = i * unitHeight;
+				itemList.add(itmItemObject);
+			}
 		}
 		isClearing = false;
 
@@ -266,8 +269,7 @@ public class ScrollerPicker extends View {
 				if (itemList.get(i).isSelected()) {
 					newMove = (int) itemList.get(i).moveToSelected();
 					if (onSelectListener != null)
-						onSelectListener.endSelect(itemList.get(i).id,
-								itemList.get(i).itemText);
+						onSelectListener.endSelect(itemList.get(i).id, itemList.get(i).itemText);
 					break;
 				}
 			}
@@ -276,8 +278,7 @@ public class ScrollerPicker extends View {
 				if (itemList.get(i).isSelected()) {
 					newMove = (int) itemList.get(i).moveToSelected();
 					if (onSelectListener != null)
-						onSelectListener.endSelect(itemList.get(i).id,
-								itemList.get(i).itemText);
+						onSelectListener.endSelect(itemList.get(i).id, itemList.get(i).itemText);
 					break;
 				}
 			}
@@ -391,10 +392,10 @@ public class ScrollerPicker extends View {
 			linePaint.setStrokeWidth(1f);
 		}
 
-		canvas.drawLine(0, controlHeight / 2 - unitHeight / 2 + 2,
-				controlWidth, controlHeight / 2 - unitHeight / 2 + 2, linePaint);
-		canvas.drawLine(0, controlHeight / 2 + unitHeight / 2 - 2,
-				controlWidth, controlHeight / 2 + unitHeight / 2 - 2, linePaint);
+		canvas.drawLine(0, controlHeight / 2 - unitHeight / 2 + 2, controlWidth,
+				controlHeight / 2 - unitHeight / 2 + 2, linePaint);
+		canvas.drawLine(0, controlHeight / 2 + unitHeight / 2 - 2, controlWidth,
+				controlHeight / 2 + unitHeight / 2 - 2, linePaint);
 	}
 
 	/**
@@ -403,18 +404,16 @@ public class ScrollerPicker extends View {
 	 * @param canvas
 	 */
 	private void drawMask(Canvas canvas) {
-		LinearGradient lg = new LinearGradient(0, 0, 0, maskHight, 0x00f2f2f2,
-				0x00f2f2f2, TileMode.MIRROR);
+		LinearGradient lg = new LinearGradient(0, 0, 0, maskHight, 0x00f2f2f2, 0x00f2f2f2, TileMode.MIRROR);
 		Paint paint = new Paint();
 		paint.setShader(lg);
 		canvas.drawRect(0, 0, controlWidth, maskHight, paint);
 
-		LinearGradient lg2 = new LinearGradient(0, controlHeight - maskHight,
-				0, controlHeight, 0x00f2f2f2, 0x00f2f2f2, TileMode.MIRROR);
+		LinearGradient lg2 = new LinearGradient(0, controlHeight - maskHight, 0, controlHeight, 0x00f2f2f2, 0x00f2f2f2,
+				TileMode.MIRROR);
 		Paint paint2 = new Paint();
 		paint2.setShader(lg2);
-		canvas.drawRect(0, controlHeight - maskHight, controlWidth,
-				controlHeight, paint2);
+		canvas.drawRect(0, controlHeight - maskHight, controlWidth, controlHeight, paint2);
 
 	}
 
@@ -425,27 +424,17 @@ public class ScrollerPicker extends View {
 	 * @param attrs
 	 */
 	private void init(Context context, AttributeSet attrs) {
-		TypedArray attribute = context.obtainStyledAttributes(attrs,
-				R.styleable.NumberPicker);
-		unitHeight = (int) attribute.getDimension(
-				R.styleable.NumberPicker_unitHight, 32);
-		normalFont = attribute.getDimension(
-				R.styleable.NumberPicker_normalTextSize, 14.0f);
-		selectedFont = attribute.getDimension(
-				R.styleable.NumberPicker_selecredTextSize, 22.0f);
+		TypedArray attribute = context.obtainStyledAttributes(attrs, R.styleable.NumberPicker);
+		unitHeight = (int) attribute.getDimension(R.styleable.NumberPicker_unitHight, 32);
+		normalFont = attribute.getDimension(R.styleable.NumberPicker_normalTextSize, 14.0f);
+		selectedFont = attribute.getDimension(R.styleable.NumberPicker_selecredTextSize, 22.0f);
 		itemNumber = attribute.getInt(R.styleable.NumberPicker_itemNumber, 7);
-		normalColor = attribute.getColor(
-				R.styleable.NumberPicker_normalTextColor, 0xff000000);
-		selectedColor = attribute.getColor(
-				R.styleable.NumberPicker_selecredTextColor, 0xffff0000);
-		lineColor = attribute.getColor(R.styleable.NumberPicker_lineColor,
-				0xff000000);
-		maskHight = attribute.getDimension(
-				R.styleable.NumberPicker_maskHight, 48.0f);
-		noEmpty = attribute.getBoolean(R.styleable.NumberPicker_noEmpty,
-				false);
-		isEnable = attribute.getBoolean(R.styleable.NumberPicker_isEnable,
-				true);
+		normalColor = attribute.getColor(R.styleable.NumberPicker_normalTextColor, 0xff000000);
+		selectedColor = attribute.getColor(R.styleable.NumberPicker_selecredTextColor, 0xffff0000);
+		lineColor = attribute.getColor(R.styleable.NumberPicker_lineColor, 0xff000000);
+		maskHight = attribute.getDimension(R.styleable.NumberPicker_maskHight, 48.0f);
+		noEmpty = attribute.getBoolean(R.styleable.NumberPicker_noEmpty, false);
+		isEnable = attribute.getBoolean(R.styleable.NumberPicker_isEnable, true);
 		attribute.recycle();
 
 		controlHeight = itemNumber * unitHeight;
@@ -457,11 +446,15 @@ public class ScrollerPicker extends View {
 	 * 
 	 * @param data
 	 */
-	public void setData(ArrayList<String> data) {
-		this.dataList = data;
+	public void setAdapter(ScrollerAdapter scrollerAdapter) {
+		this.scrollerAdapter=scrollerAdapter;
 		initData();
 	}
-
+	
+	public ScrollerAdapter getAdapter(){
+		return scrollerAdapter;
+	}
+ 
 	/**
 	 * 获取返回项
 	 * 
@@ -521,8 +514,10 @@ public class ScrollerPicker extends View {
 	 * @param index
 	 */
 	public void setDefault(int index) {
-		float move = itemList.get(index).moveToSelected();
-		defaultMove((int) move);
+		if(itemList.size()>index){
+			float move = itemList.get(index).moveToSelected();
+			defaultMove((int) move);
+		}
 	}
 
 	/**
@@ -617,15 +612,17 @@ public class ScrollerPicker extends View {
 
 			// 判断是否被选择
 			if (isSelected()) {
-				textPaint.setColor(selectedColor);
+				if(isEnable){
+					textPaint.setColor(selectedColor);
+				}else{
+					textPaint.setColor(normalColor);
+				}
 				// 获取距离标准位置的距离
 				float moveToSelect = moveToSelected();
-				moveToSelect = moveToSelect > 0 ? moveToSelect : moveToSelect
-						* (-1);
+				moveToSelect = moveToSelect > 0 ? moveToSelect : moveToSelect * (-1);
 				// 计算当前字体大小
 				float textSize = (float) normalFont
-						+ ((float) (selectedFont - normalFont) * (1.0f - (float) moveToSelect
-								/ (float) unitHeight));
+						+ ((float) (selectedFont - normalFont) * (1.0f - (float) moveToSelect / (float) unitHeight));
 				textPaint.setTextSize(textSize);
 			} else {
 				textPaint.setColor(normalColor);
@@ -639,9 +636,8 @@ public class ScrollerPicker extends View {
 				return;
 
 			// 绘制内容
-			canvas.drawText(itemText, x + controlWidth / 2 - textRect.width()
-					/ 2, y + move + unitHeight / 2 + textRect.height() / 2,
-					textPaint);
+			canvas.drawText(itemText, x + controlWidth / 2 - textRect.width() / 2,
+					y + move + unitHeight / 2 + textRect.height() / 2, textPaint);
 
 		}
 
@@ -652,8 +648,7 @@ public class ScrollerPicker extends View {
 		 * @return
 		 */
 		public boolean isInView() {
-			if (y + move > controlHeight
-					|| (y + move + unitHeight / 2 + textRect.height() / 2) < 0)
+			if (y + move > controlHeight || (y + move + unitHeight / 2 + textRect.height() / 2) < 0)
 				return false;
 			return true;
 		}
@@ -686,14 +681,11 @@ public class ScrollerPicker extends View {
 			if ((y + move) >= controlHeight / 2 - unitHeight / 2 + 2
 					&& (y + move) <= controlHeight / 2 + unitHeight / 2 - 2)
 				return true;
-			if ((y + move + unitHeight) >= controlHeight / 2 - unitHeight / 2
-					+ 2
-					&& (y + move + unitHeight) <= controlHeight / 2
-							+ unitHeight / 2 - 2)
+			if ((y + move + unitHeight) >= controlHeight / 2 - unitHeight / 2 + 2
+					&& (y + move + unitHeight) <= controlHeight / 2 + unitHeight / 2 - 2)
 				return true;
 			if ((y + move) <= controlHeight / 2 - unitHeight / 2 + 2
-					&& (y + move + unitHeight) >= controlHeight / 2
-							+ unitHeight / 2 - 2)
+					&& (y + move + unitHeight) >= controlHeight / 2 + unitHeight / 2 - 2)
 				return true;
 			return false;
 		}

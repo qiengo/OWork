@@ -1,6 +1,7 @@
 package com.wzh.lgtrans.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.wzh.lgtrans.R;
+import com.wzh.lgtrans.activity.QiangSucActivity;
 
 /**
  * 分类列表的适配器
@@ -16,6 +18,7 @@ import com.wzh.lgtrans.R;
  * @version 创建时间：2014年3月18日
  */
 public class JieHuoAdapter extends BaseAdapter{
+	private Context ctx;
 	/**
 	 * 存放内容数据的数组list
 	 */
@@ -25,6 +28,7 @@ public class JieHuoAdapter extends BaseAdapter{
 	 */
 	private final LayoutInflater mInflater;
 	public JieHuoAdapter(Context ctx){
+		this.ctx=ctx;
 		mInflater= LayoutInflater.from(ctx);
 	}
 	
@@ -55,14 +59,17 @@ public class JieHuoAdapter extends BaseAdapter{
 		}else{
 			holder=new Holder();
 			convertView=mInflater.inflate(R.layout.item_list_jiehuo, null);
-//			holder.title=(TextView)convertView.findViewById(R.id.tv_list_catg_title);
-//			holder.subtitle=(TextView)convertView.findViewById(R.id.tv_list_catg_subtitle);
-//			holder.img=(ImageView)convertView.findViewById(R.id.iv_list_catg_cover);
+			holder.qiang=(TextView)convertView.findViewById(R.id.tv_item_jiehuo_qiang);
+			holder.qiang.setOnClickListener(new View.OnClickListener() {
+				
+				@Override
+				public void onClick(View v) {
+					Intent intent=new Intent(ctx, QiangSucActivity.class);
+					ctx.startActivity(intent);
+				}
+			});
 			convertView.setTag(holder);
 		}
-//		ItemCatg item=mList.get(position);
-//		holder.title.setText(item.title);
-//		holder.subtitle.setText(item.subtitle);
 		return convertView;
 	}
 	/**
@@ -70,7 +77,7 @@ public class JieHuoAdapter extends BaseAdapter{
 	 */
 	class Holder{
 		TextView title;
-		TextView subtitle;
+		TextView qiang;
 		ImageView img;
 	}
 }

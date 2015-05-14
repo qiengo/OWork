@@ -30,6 +30,20 @@ public class MainActivity extends FragmentActivity {
 		fragmentList.add(new MyFragment());
 		mPager.setAdapter(new MyFragmentPagerAdapter(getSupportFragmentManager(), fragmentList));  
         mPager.setCurrentItem(1);//设置当前显示标签页为第一页  
+        mPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+			
+			@Override
+			public void onPageSelected(int arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void onPageScrolled(int arg0, float arg1, int arg2) {}
+			
+			@Override
+			public void onPageScrollStateChanged(int arg0) {}
+		});
 		
 	}
 

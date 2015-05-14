@@ -45,7 +45,7 @@ public class MainFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View mainView = mInflater.inflate(R.layout.fragment_main, container, false);
-		mainView.findViewById(R.id.lay_lin_kongche).setOnClickListener(new View.OnClickListener() {
+		mainView.findViewById(R.id.lay_lin_huodan).setOnClickListener(new View.OnClickListener() {
 
 			@Override
 			public void onClick(View v) {

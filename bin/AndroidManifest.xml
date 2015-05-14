@@ -15,7 +15,7 @@
         android:theme="@style/AppTheme.ActionBar">
         <activity
             android:name="com.wzh.lgtrans.activity.MainActivity" 
-            android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
+            android:theme="@android:style/Theme.NoTitleBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -39,6 +39,8 @@
             android:name="com.wzh.lgtrans.activity.Register3Activity"/>
         <activity
             android:name="com.wzh.lgtrans.activity.TestActivity"/>
+        <activity
+            android:name="com.wzh.lgtrans.activity.QiangSucActivity"/>
     </application>
 
 </manifest>

@@ -13,5 +13,9 @@
         <attr name="noEmpty" format="boolean"/>
         <attr name="isEnable" format="boolean"/>
     </declare-styleable>
+    
+    <declare-styleable name="UnderlineTabView">
+
+    </declare-styleable>
 
 </resources>

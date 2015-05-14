@@ -14,6 +14,7 @@ public class JieHuoActivity extends ActionBarBaseActivity {
 	private ListView listView;
 	private JieHuoAdapter jiehuoAdapter;
 	private Context ctx;
+	private CityPickerDialog cityPickerDialog;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -21,34 +22,27 @@ public class JieHuoActivity extends ActionBarBaseActivity {
 		ctx = this;
 		setContentView(R.layout.activity_jiehuo);
 		setActionBarTitel("我要接活");
+		cityPickerDialog=new CityPickerDialog(ctx) {
+
+			@Override
+			public void onConfirm(String ret) {
+				dismiss();
+				Log.i("tt", ret);
+			}
+
+		};
 		findViewById(R.id.lay_lin_jiehuo_poss).setOnClickListener(new View.OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
-				new CityPickerDialog(ctx) {
-
-					@Override
-					public void onConfirm(String ret) {
-						dismiss();
-						Log.i("tt", ret);
-					}
-
-				}.show();
+				cityPickerDialog.show();
 			}
 		});
 		findViewById(R.id.lay_lin_jiehuo_pose).setOnClickListener(new View.OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
-				new CityPickerDialog(ctx) {
-
-					@Override
-					public void onConfirm(String ret) {
-						dismiss();
-						Log.i("tt", ret);
-					}
-
-				}.show();
+				cityPickerDialog.show();
 			}
 		});
 		jiehuoAdapter = new JieHuoAdapter(this);

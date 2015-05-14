@@ -11,7 +11,7 @@ public class CityPickerDialog extends Dialog {
 
 	public CityPickerDialog(final Context context) {
 		super(context);
-		setTitle("选择城市:");
+		setTitle("选择城市");
 		setContentView(R.layout.dialog_citypicker);
 		setCanceledOnTouchOutside(true);
 
