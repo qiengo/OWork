@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:wzh="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -7,14 +8,15 @@
 
     <com.wzh.lgtrans.view.UnderlineTabView
         android:layout_width="match_parent"
-        android:layout_height="40dp" />
+        android:layout_height="40dp"
+        wzh:fontSize="18sp" />
 
     <ListView
         android:id="@+id/list_myhuodan"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:dividerHeight="5dp"
-        android:layout_weight="1" >
+        android:layout_weight="1"
+        android:dividerHeight="5dp" >
     </ListView>
 
 </LinearLayout>

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Paint.FontMetricsInt;
@@ -23,6 +24,7 @@ public class UnderlineTabView extends View implements OnTouchListener{
 	private int viewWidth,unitWidth;
 	private OnChangeListener onChangeListener;
 	private int lineColor,selectColor;
+	private float fontSize = 28.0f;
 
 	public UnderlineTabView(Context context) {
 		this(context, null);
@@ -37,21 +39,24 @@ public class UnderlineTabView extends View implements OnTouchListener{
 		final Resources res = getResources();
 		lineColor=res.getColor(R.color.divider_gray);
 		selectColor=res.getColor(R.color.theme_blue);
+		TypedArray attribute = context.obtainStyledAttributes(attrs, R.styleable.UnderlineTabView);
+		fontSize = attribute.getDimension(R.styleable.UnderlineTabView_fontSize, 28.0f);
 		titleList = new ArrayList<String>();
 		mBorderPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
 		mBorderPaint.setColor(lineColor);
 		mBorderPaint.setStrokeWidth(2);
 
 		mTextPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-		mTextPaint.setTextSize(28);
+		mTextPaint.setTextSize(fontSize);
 		mTextPaint.setColor(0xff000000);
 		mSelTextPaint= new Paint(Paint.ANTI_ALIAS_FLAG);
-		mSelTextPaint.setTextSize(28);
+		mSelTextPaint.setTextSize(fontSize);
 		mSelTextPaint.setColor(selectColor);
 		
 		mSelectedPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
 		mSelectedPaint.setColor(selectColor);
 		mSelectedPaint.setStyle(Style.FILL);
+		
 		setOnTouchListener(this);
 		
 

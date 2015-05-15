@@ -12,8 +12,8 @@ import android.view.ViewGroup;
 import com.wzh.lgtrans.R;
 import com.wzh.lgtrans.activity.JieHuoActivity;
 import com.wzh.lgtrans.activity.MyHuodanActivity;
+import com.wzh.lgtrans.activity.PicUploadActivity;
 import com.wzh.lgtrans.activity.Register1Activity;
-import com.wzh.lgtrans.activity.TestActivity;
 
 /**
  * 购物车界面的fragment
@@ -73,7 +73,7 @@ public class MainFragment extends Fragment {
 
 			@Override
 			public void onClick(View v) {
-				Intent intent=new Intent(ctx, TestActivity.class);
+				Intent intent=new Intent(ctx, PicUploadActivity.class);
 				ctx.startActivity(intent);
 			}
 		});

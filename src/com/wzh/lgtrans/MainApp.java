@@ -23,7 +23,7 @@ public class MainApp extends Application{
 		initVolly(this);
 //		initImageLoader(this);
 		LocateUtil.getSingleton().loadData(this);
-		LocateUtil.getSingleton().LocCode("621002");
+//		LocateUtil.getSingleton().LocCode("621002");
 	}
 
 	public static MainApp getInstance() {
