@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 
 import com.wzh.lgtrans.R;
 import com.wzh.lgtrans.fragment.MainFragment;
@@ -21,7 +22,7 @@ public class MainActivity extends FragmentActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_mian);
+		setContentView(R.layout.activity_main);
 		
 		mPager = (ViewPager) findViewById(R.id.vpg_main);
 		fragmentList = new ArrayList<Fragment>();
@@ -34,7 +35,7 @@ public class MainActivity extends FragmentActivity {
 			
 			@Override
 			public void onPageSelected(int arg0) {
-				// TODO Auto-generated method stub
+				Log.i("1", "ddd "+arg0);
 				
 			}
 			

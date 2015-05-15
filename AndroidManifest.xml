@@ -48,6 +48,7 @@
         <activity android:name="com.wzh.lgtrans.activity.TestActivity" />
         <activity android:name="com.wzh.lgtrans.activity.QiangSucActivity" />
         <activity android:name="com.wzh.lgtrans.activity.PicUploadActivity" />
+        <activity android:name="com.wzh.lgtrans.activity.LoginActivity" />
     </application>
 
 </manifest>

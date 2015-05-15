@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 
 import com.wzh.lgtrans.R;
 import com.wzh.lgtrans.activity.JieHuoActivity;
+import com.wzh.lgtrans.activity.LoginActivity;
 import com.wzh.lgtrans.activity.MyHuodanActivity;
 import com.wzh.lgtrans.activity.PicUploadActivity;
 import com.wzh.lgtrans.activity.Register1Activity;
@@ -45,6 +46,14 @@ public class MainFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View mainView = mInflater.inflate(R.layout.fragment_main, container, false);
+		mainView.findViewById(R.id.btn_main_login).setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				Intent intent=new Intent(ctx, LoginActivity.class);
+				ctx.startActivity(intent);
+			}
+		});
 		mainView.findViewById(R.id.lay_lin_huodan).setOnClickListener(new View.OnClickListener() {
 
 			@Override

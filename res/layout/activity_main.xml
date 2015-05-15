@@ -31,7 +31,7 @@
                 android:id="@+id/iv_main_more"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                android:src="@drawable/ic_btn_box" />
+                android:src="@drawable/ic_main_box_nor" />
 
             <TextView
                 android:id="@+id/tv_main_more"
@@ -54,7 +54,7 @@
                 android:id="@+id/iv_main_my"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                android:src="@drawable/ic_main_my" />
+                android:src="@drawable/ic_main_my_nor" />
 
             <TextView
                 android:id="@+id/tv_main_my"
@@ -74,6 +74,6 @@
         android:layout_centerHorizontal="true"
         android:background="@drawable/bg_btn_home_sel" 
         android:padding="12dp"
-        android:src="@drawable/ic_btn_main_home"/>
+        android:src="@drawable/ic_main_home_nor"/>
 
 </RelativeLayout>
