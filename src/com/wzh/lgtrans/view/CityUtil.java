@@ -22,18 +22,18 @@ import com.wzh.lgtrans.util.FileUtil;
  * @author wzh
  * 
  */
-public class LocateUtil {
+public class CityUtil {
 
-	private List<LocateInfo> prov_list = new ArrayList<LocateInfo>();
-	private HashMap<String, List<LocateInfo>> city_map = new HashMap<String, List<LocateInfo>>();
-	private HashMap<String, List<LocateInfo>> couny_map = new HashMap<String, List<LocateInfo>>();
+	private List<CityInfo> prov_list = new ArrayList<CityInfo>();
+	private HashMap<String, List<CityInfo>> city_map = new HashMap<String, List<CityInfo>>();
+	private HashMap<String, List<CityInfo>> couny_map = new HashMap<String, List<CityInfo>>();
 
-	private static LocateUtil model;
-	private LocateUtil() {}
+	private static CityUtil model;
+	private CityUtil() {}
 	
-	public static LocateUtil getSingleton() {
+	public static CityUtil getSingleton() {
 		if (null == model) {
-			model = new LocateUtil();
+			model = new CityUtil();
 		}
 		return model;
 	}
@@ -46,71 +46,73 @@ public class LocateUtil {
 		couny_map = parser.getJSONParserResultArray(area_str, "area2");
 	}
 
-	public List<LocateInfo> getProvlist() {
+	public List<CityInfo> getProvlist() {
 		return prov_list;
 	}
-	public List<LocateInfo> getCityList(String provCode) {
+	public List<CityInfo> getCityList(String provCode) {
 		return city_map.get(provCode);
 	}
-	public List<LocateInfo> getCounyList(String cityCode) {
+	public List<CityInfo> getCounyList(String cityCode) {
 		return couny_map.get(cityCode);
 	}
-	public void LocCode(String code) {
+	public int[] LocCode(String code) {
+		int[] ret={-1,-1,-1};
 		if(code.length()==6){
 			String provCode=code.substring(0, 2)+"0000";
 			System.out.println("======provCode:"+provCode);
 			String locProv=null;
 			String locCity=null;
-			String locCouny=null;
 			int prov_count=prov_list.size();
 			for(int i=0;i<prov_count;i++){
-				LocateInfo locateInfo=prov_list.get(i);
+				CityInfo locateInfo=prov_list.get(i);
 				if(locateInfo.getId().equals(provCode)){
 					locProv=locateInfo.getId();
 					System.out.println("======provName:"+locateInfo.getName());
+					ret[0]=i;
 					break;
 				}
 			}
 			if(locProv!=null){
 				String cityCode=code.substring(0, 4)+"00";
 				System.out.println("======cityCode:"+cityCode);
-				List<LocateInfo> cityList=getCityList(locProv);
+				List<CityInfo> cityList=getCityList(locProv);
 				int city_count=cityList.size();
 				for(int i=0;i<city_count;i++){
-					LocateInfo locateInfo=cityList.get(i);
+					CityInfo locateInfo=cityList.get(i);
 					if(locateInfo.getId().equals(cityCode)){
 						locCity=locateInfo.getId();
 						System.out.println("======cityName:"+locateInfo.getName());
+						ret[1]=i;
 						break;
 					}
 				}
 			}
 			if(locCity!=null){
-				List<LocateInfo> counyList=getCounyList(locCity);
+				List<CityInfo> counyList=getCounyList(locCity);
 				int couny_count=counyList.size();
 				for(int i=0;i<couny_count;i++){
-					LocateInfo locateInfo=counyList.get(i);
+					CityInfo locateInfo=counyList.get(i);
 					if(locateInfo.getId().equals(code)){
-						locCouny=locateInfo.getId();
 						System.out.println("======counyName:"+locateInfo.getName());
+						ret[2]=i;
 						break;
 					}
 				}
 			}
 		}
-		
+		return ret;
 	}
 	
 	private class CityParser {
 
-		public List<LocateInfo> getJSONParserResult(String JSONString, String key) {
-			List<LocateInfo> list = new ArrayList<LocateInfo>();
+		public List<CityInfo> getJSONParserResult(String JSONString, String key) {
+			List<CityInfo> list = new ArrayList<CityInfo>();
 			JsonObject result = new JsonParser().parse(JSONString).getAsJsonObject().getAsJsonObject(key);
 
 			Iterator<Entry<String, JsonElement>> iterator = result.entrySet().iterator();
 			while (iterator.hasNext()) {
 				Map.Entry<String, JsonElement> entry = (Entry<String, JsonElement>) iterator.next();
-				LocateInfo cityinfo = new LocateInfo();
+				CityInfo cityinfo = new CityInfo();
 				cityinfo.setName(entry.getValue().getAsString());
 				cityinfo.setId(entry.getKey());
 				list.add(cityinfo);
@@ -118,17 +120,17 @@ public class LocateUtil {
 			return list;
 		}
 
-		public HashMap<String, List<LocateInfo>> getJSONParserResultArray(String JSONString, String key) {
-			HashMap<String, List<LocateInfo>> hashMap = new HashMap<String, List<LocateInfo>>();
+		public HashMap<String, List<CityInfo>> getJSONParserResultArray(String JSONString, String key) {
+			HashMap<String, List<CityInfo>> hashMap = new HashMap<String, List<CityInfo>>();
 			JsonObject result = new JsonParser().parse(JSONString).getAsJsonObject().getAsJsonObject(key);
 
 			Iterator<Entry<String, JsonElement>> iterator = result.entrySet().iterator();
 			while (iterator.hasNext()) {
 				Map.Entry<String, JsonElement> entry = (Entry<String, JsonElement>) iterator.next();
-				List<LocateInfo> list = new ArrayList<LocateInfo>();
+				List<CityInfo> list = new ArrayList<CityInfo>();
 				JsonArray array = entry.getValue().getAsJsonArray();
 				for (int i = 0; i < array.size(); i++) {
-					LocateInfo cityinfo = new LocateInfo();
+					CityInfo cityinfo = new CityInfo();
 					cityinfo.setName(array.get(i).getAsJsonArray().get(0).getAsString());
 					cityinfo.setId(array.get(i).getAsJsonArray().get(1).getAsString());
 					list.add(cityinfo);

@@ -1,21 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:wzh="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
     android:orientation="vertical" >
 
-    <com.wzh.lgtrans.view.LocatePicker
-        android:id="@+id/citypicker"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center" >
-    </com.wzh.lgtrans.view.LocatePicker>
+        android:gravity="center"
+        android:orientation="horizontal" >
 
-    <Button
-        android:id="@+id/btn_citypicker_ok"
-        android:layout_width="wrap_content"
+        <com.wzh.lgtrans.view.ScrollerPicker
+            android:id="@+id/province"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="1dp"
+            android:layout_marginRight="1dp"
+            android:layout_weight="1"
+            wzh:itemNumber="5"
+            wzh:lineColor="#ffff6000"
+            wzh:maskHight="32dp"
+            wzh:noEmpty="true"
+            wzh:normalTextColor="#777"
+            wzh:normalTextSize="16sp"
+            wzh:selecredTextColor="#ff000000"
+            wzh:selecredTextSize="18sp"
+            wzh:unitHight="40dp" />
+
+        <com.wzh.lgtrans.view.ScrollerPicker
+            android:id="@+id/city"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="1dp"
+            android:layout_marginRight="1dp"
+            android:layout_weight="1"
+            wzh:itemNumber="5"
+            wzh:lineColor="#ffff6000"
+            wzh:maskHight="32dp"
+            wzh:noEmpty="true"
+            wzh:normalTextColor="#777"
+            wzh:normalTextSize="16sp"
+            wzh:selecredTextColor="#ff000000"
+            wzh:selecredTextSize="18sp"
+            wzh:unitHight="40dp" />
+
+        <com.wzh.lgtrans.view.ScrollerPicker
+            android:id="@+id/couny"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="1dp"
+            android:layout_marginRight="1dp"
+            android:layout_weight="1"
+            wzh:itemNumber="5"
+            wzh:lineColor="#ffff6000"
+            wzh:maskHight="32dp"
+            wzh:noEmpty="true"
+            wzh:normalTextColor="#777"
+            wzh:normalTextSize="16sp"
+            wzh:selecredTextColor="#ff000000"
+            wzh:selecredTextSize="18sp"
+            wzh:unitHight="40dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="确定" />
+        android:gravity="center_horizontal"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/btn_citypicker_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="取消" />
+
+        <Button
+            android:id="@+id/btn_citypicker_ok"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:text="确定" />
+    </LinearLayout>
 
 </LinearLayout>

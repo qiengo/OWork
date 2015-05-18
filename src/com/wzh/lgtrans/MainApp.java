@@ -3,7 +3,7 @@ package com.wzh.lgtrans;
 import android.app.Application;
 import android.content.Context;
 
-import com.wzh.lgtrans.view.LocateUtil;
+import com.wzh.lgtrans.view.CityUtil;
 
 /**
  * 应用启动类
@@ -22,7 +22,7 @@ public class MainApp extends Application{
 		AppConfig.loadConfigs(this);
 		initVolly(this);
 //		initImageLoader(this);
-		LocateUtil.getSingleton().loadData(this);
+		CityUtil.getSingleton().loadData(this);
 //		LocateUtil.getSingleton().LocCode("621002");
 	}
 

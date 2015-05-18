@@ -31,8 +31,8 @@ public class ScrollerPicker extends View {
 	/** 选择的内容 */
 	private ArrayList<ItemObject> itemList = new ArrayList<ScrollerPicker.ItemObject>();
 	/** 设置数据 */
-//	private ArrayList<String> dataList = new ArrayList<String>();
-	private ScrollerAdapter scrollerAdapter=null;
+	// private ArrayList<String> dataList = new ArrayList<String>();
+	private ScrollerAdapter scrollerAdapter = null;
 	/** 按下的坐标 */
 	private int downY;
 	/** 按下的时间 */
@@ -196,6 +196,8 @@ public class ScrollerPicker extends View {
 			if (item.isSelected())
 				return;
 		}
+		if (itemList.size()==0)
+			return;
 		int move = (int) itemList.get(0).moveToSelected();
 		if (move < 0) {
 			defaultMove(move);
@@ -217,7 +219,7 @@ public class ScrollerPicker extends View {
 	private void initData() {
 		isClearing = true;
 		itemList.clear();
-		if(scrollerAdapter!=null){
+		if (scrollerAdapter != null) {
 			for (int i = 0; i < scrollerAdapter.getSize(); i++) {
 				ItemObject itmItemObject = new ItemObject();
 				itmItemObject.id = i;
@@ -447,14 +449,14 @@ public class ScrollerPicker extends View {
 	 * @param data
 	 */
 	public void setAdapter(ScrollerAdapter scrollerAdapter) {
-		this.scrollerAdapter=scrollerAdapter;
+		this.scrollerAdapter = scrollerAdapter;
 		initData();
 	}
-	
-	public ScrollerAdapter getAdapter(){
+
+	public ScrollerAdapter getAdapter() {
 		return scrollerAdapter;
 	}
- 
+
 	/**
 	 * 获取返回项
 	 * 
@@ -514,7 +516,7 @@ public class ScrollerPicker extends View {
 	 * @param index
 	 */
 	public void setDefault(int index) {
-		if(itemList.size()>index){
+		if (itemList.size() > index) {
 			float move = itemList.get(index).moveToSelected();
 			defaultMove((int) move);
 		}
@@ -612,9 +614,9 @@ public class ScrollerPicker extends View {
 
 			// 判断是否被选择
 			if (isSelected()) {
-				if(isEnable){
+				if (isEnable) {
 					textPaint.setColor(selectedColor);
-				}else{
+				} else {
 					textPaint.setColor(normalColor);
 				}
 				// 获取距离标准位置的距离
@@ -723,4 +725,5 @@ public class ScrollerPicker extends View {
 		public void selecting(int id, String text);
 
 	}
+
 }
