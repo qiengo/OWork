@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#fff"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:padding="5dp" >
+
+    <ImageView
+        android:layout_width="14dp"
+        android:layout_height="14dp"
+        android:src="@drawable/ic_huodan_pose" />
+
+    <TextView
+        android:id="@+id/tv_item_busicity_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:hint="请选择业务城市"
+        android:layout_weight="1"
+        android:textSize="16sp"
+        android:padding="3dp"
+        android:gravity="center_vertical"
+        android:textColor="@color/text_black" />
+    <ImageView
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:padding="5dp"
+        android:src="@drawable/ic_arrow_r" />
+
+</LinearLayout>

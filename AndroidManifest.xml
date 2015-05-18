@@ -30,6 +30,7 @@
         android:theme="@style/AppTheme.ActionBar" >
         <activity
             android:name="com.wzh.lgtrans.activity.MainActivity"
+            android:screenOrientation="portrait"
             android:theme="@android:style/Theme.NoTitleBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -37,18 +38,45 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.wzh.lgtrans.activity.MyInfoActivity" />
-        <activity android:name="com.wzh.lgtrans.activity.MyHuodanActivity" />
-        <activity android:name="com.wzh.lgtrans.activity.JieHuoActivity" />
-        <activity android:name="com.wzh.lgtrans.activity.HuodanDetailActivity" />
-        <activity android:name="com.wzh.lgtrans.activity.Register0Activity" />
-        <activity android:name="com.wzh.lgtrans.activity.Register1Activity" />
-        <activity android:name="com.wzh.lgtrans.activity.Register2Activity" />
-        <activity android:name="com.wzh.lgtrans.activity.Register3Activity" />
-        <activity android:name="com.wzh.lgtrans.activity.TestActivity" />
-        <activity android:name="com.wzh.lgtrans.activity.QiangSucActivity" />
-        <activity android:name="com.wzh.lgtrans.activity.PicUploadActivity" />
-        <activity android:name="com.wzh.lgtrans.activity.LoginActivity" />
+        <activity
+            android:name="com.wzh.lgtrans.activity.MyInfoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.wzh.lgtrans.activity.MyHuodanActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.wzh.lgtrans.activity.JieHuoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.wzh.lgtrans.activity.HuodanDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.wzh.lgtrans.activity.Register0Activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.wzh.lgtrans.activity.Register1Activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.wzh.lgtrans.activity.Register2Activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.wzh.lgtrans.activity.Register3Activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.wzh.lgtrans.activity.TestActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.wzh.lgtrans.activity.QiangSucActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.wzh.lgtrans.activity.PicUploadActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.wzh.lgtrans.activity.LoginActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.wzh.lgtrans.activity.BusiCityActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

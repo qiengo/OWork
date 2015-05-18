@@ -12,6 +12,14 @@ public class Register2Activity extends ActionBarBaseActivity{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_register2);
 		setActionBarTitel("完善信息");
+		findViewById(R.id.tv_reg2_busi_city).setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(Register2Activity.this, BusiCityActivity.class);
+				startActivity(intent);
+			}
+		});
 		
 		findViewById(R.id.tv_btn_next).setOnClickListener(new View.OnClickListener() {
 

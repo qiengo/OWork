@@ -1,7 +1,5 @@
 package com.wzh.lgtrans.dialog;
 
-import java.util.List;
-
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
@@ -54,7 +52,7 @@ public class CityPickerDialog extends Dialog {
 		
 		provAdapter.setData(cityUtil.getProvlist());
 		provPicker.setAdapter(provAdapter);
-		initSelect(defaultCity.getId());
+		initSelect(defaultCity);
 		provPicker.setOnSelectListener(new OnSelectListener() {
 
 			@Override
@@ -207,14 +205,15 @@ public class CityPickerDialog extends Dialog {
 		dismiss();
 	}
 
-	public void initSelect(String code) {
+	public void initSelect(CityInfo city) {
+		String code="000000";
+		if(city!=null&&!city.isNull()&&city.getId().length()==6){
+			code=city.getId();
+		}
 		Log.i(TAG, "init code:"+code);
 		int provId = 0;
 		int cityId = 0;
 		int counyId = 0;
-		if (code.length() != 6) {
-			code="000000";
-		}
 		String provCode = code.substring(0, 2) + "0000";
 		String locProv = null;
 		String locCity = null;
