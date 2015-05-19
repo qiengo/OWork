@@ -1,17 +1,17 @@
-package com.wzh.lgtrans.view;
+package com.wzh.lgtrans.struct;
 
 import java.io.Serializable;
 
-public class CityInfo implements Serializable {
+public class IdName implements Serializable {
 
 	private static final long serialVersionUID = -6731710204306064796L;
 	private String id = null;
 	private String name = null;
 
-	public CityInfo() {
+	public IdName() {
 	}
 
-	public CityInfo(String id, String name) {
+	public IdName(String id, String name) {
 		setId(id);
 		setName(name);
 	}
@@ -39,14 +39,14 @@ public class CityInfo implements Serializable {
 		this.name = name;
 	}
 
-	public void clone(CityInfo city) {
-		setId(city.id);
-		setName(city.name);
+	public void clone(IdName idName) {
+		setId(idName.id);
+		setName(idName.name);
 	}
 
 	@Override
 	public String toString() {
-		return "Cityinfo [id=" + id + ", name=" + name + "]";
+		return "IdName [id=" + id + ", name=" + name + "]";
 	}
 
 }

@@ -22,7 +22,7 @@
         android:dividerHeight="1dp" />
 
     <Button
-        android:id="@+id/btn_test_pop"
+        android:id="@+id/btn_busicity_ok"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:text="完成" />

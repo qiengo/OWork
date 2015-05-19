@@ -9,15 +9,15 @@ import android.util.Log;
 import android.view.View;
 
 import com.wzh.lgtrans.R;
-import com.wzh.lgtrans.view.CityInfo;
-import com.wzh.lgtrans.view.CityUtil;
+import com.wzh.lgtrans.struct.IdName;
+import com.wzh.lgtrans.util.JsonUtil;
 import com.wzh.lgtrans.view.ScrollerAdapter;
 import com.wzh.lgtrans.view.ScrollerPicker;
 import com.wzh.lgtrans.view.ScrollerPicker.OnSelectListener;
 
 public class CityPickerDialog extends Dialog {
 	private static final String TAG = "CityPickerDialog";
-	private CityInfo defaultCity;
+	private IdName defaultCity;
 	private ScrollerPicker provPicker;
 	private ScrollerPicker cityPicker;
 	private ScrollerPicker counyPicker;
@@ -32,25 +32,32 @@ public class CityPickerDialog extends Dialog {
 	private int tempProvinceIndex = -1;
 	private int temCityIndex = -1;
 	private int tempCounyIndex = -1;
-	private CityUtil cityUtil = CityUtil.getSingleton();
+	private boolean isEnableCouny=false;
 
-	public CityPickerDialog(final Context context, CityInfo city) {
+	public CityPickerDialog(final Context context, IdName city,boolean enableCouny) {
 		super(context);
 		setTitle("选择城市");
 		setContentView(R.layout.dialog_citypicker);
 		setCanceledOnTouchOutside(true);
 		defaultCity = city;
 
-		provPicker = (ScrollerPicker) findViewById(R.id.province);
-		cityPicker = (ScrollerPicker) findViewById(R.id.city);
-		counyPicker = (ScrollerPicker) findViewById(R.id.couny);
+		provPicker = (ScrollerPicker) findViewById(R.id.sp_city_province);
+		cityPicker = (ScrollerPicker) findViewById(R.id.sp_city_city);
+		counyPicker = (ScrollerPicker) findViewById(R.id.sp_city_couny);
+		this.isEnableCouny=enableCouny;
+		if(isEnableCouny){
+			counyPicker.setVisibility(View.VISIBLE);
+		}else{
+			counyPicker.setVisibility(View.GONE);
+		}
+		
 		provAdapter = new CityAdapter(true);
-		provAdapter.setAllItem(new CityInfo("-1", "全国"));
+		provAdapter.setAllItem(new IdName("-1", "全国"));
 		cityAdapter = new CityAdapter(true);
-		cityAdapter.setAllItem(new CityInfo("-1", "不限"));
+		cityAdapter.setAllItem(new IdName("-1", "不限"));
 		counyAdapter = new CityAdapter(false);
 		
-		provAdapter.setData(cityUtil.getProvlist());
+		provAdapter.setData(JsonUtil.getProvlist());
 		provPicker.setAdapter(provAdapter);
 		initSelect(defaultCity);
 		provPicker.setOnSelectListener(new OnSelectListener() {
@@ -74,13 +81,13 @@ public class CityPickerDialog extends Dialog {
 					Log.i(TAG, "province endselect");
 					String selectDay = cityPicker.getSelectedText();
 					if (selectDay != null && !selectDay.equals("")) {
-						cityAdapter.setData(cityUtil.getCityList(provAdapter.getCode(id)));
+						cityAdapter.setData(JsonUtil.getCityList(provAdapter.getCode(id)));
 						cityPicker.setAdapter(cityAdapter);
 						cityPicker.setDefault(1);
 					}
 					String selectMonth = counyPicker.getSelectedText();
 					if (selectMonth != null && !selectMonth.equals("")) {
-						counyAdapter.setData(cityUtil.getCounyList(cityAdapter.getCode(1)));
+						counyAdapter.setData(JsonUtil.getCounyList(cityAdapter.getCode(1)));
 						counyPicker.setAdapter(counyAdapter);
 						counyPicker.setDefault(1);
 					}
@@ -120,7 +127,7 @@ public class CityPickerDialog extends Dialog {
 						return;
 					String selectCouny = counyPicker.getSelectedText();
 					if (selectCouny != null && !selectCouny.equals("")) {
-						counyAdapter.setData(cityUtil.getCounyList(cityAdapter.getCode(id)));
+						counyAdapter.setData(JsonUtil.getCounyList(cityAdapter.getCode(id)));
 						counyPicker.setAdapter(counyAdapter);
 						counyPicker.setDefault(1);
 					}
@@ -180,10 +187,10 @@ public class CityPickerDialog extends Dialog {
 
 			@Override
 			public void onClick(View v) {
-				CityInfo selCity;
+				IdName selCity;
 				int counyId = counyPicker.getSelected();
 				Log.i(TAG, "counyId:" + counyId);
-				if (counyId > 0 && counyPicker.isEnable()) {
+				if (counyId > 0 && counyPicker.isEnable()&&isEnableCouny) {
 					selCity = counyAdapter.getDataList().get(counyId);
 				} else {
 					int cityId = cityPicker.getSelected();
@@ -201,11 +208,11 @@ public class CityPickerDialog extends Dialog {
 		});
 	}
 
-	public void onConfirm(CityInfo city) {
+	public void onConfirm(IdName city) {
 		dismiss();
 	}
 
-	public void initSelect(CityInfo city) {
+	public void initSelect(IdName city) {
 		String code="000000";
 		if(city!=null&&!city.isNull()&&city.getId().length()==6){
 			code=city.getId();
@@ -219,7 +226,7 @@ public class CityPickerDialog extends Dialog {
 		String locCity = null;
 		int prov_count = provAdapter.getDataList().size();
 		for (int i = 0; i < prov_count; i++) {
-			CityInfo locateInfo = provAdapter.getDataList().get(i);
+			IdName locateInfo = provAdapter.getDataList().get(i);
 			if (locateInfo.getId().equals(provCode)) {
 				locProv = locateInfo.getId();
 				provId = i;
@@ -230,10 +237,10 @@ public class CityPickerDialog extends Dialog {
 		Log.i(TAG, "init provId:"+provId);
 		
 		if (provId == 0) {
-			cityAdapter.setData(cityUtil.getCityList(provAdapter.getCode(2)));
+			cityAdapter.setData(JsonUtil.getCityList(provAdapter.getCode(2)));
 			cityPicker.setEnable(false);
 		} else {
-			cityAdapter.setData(cityUtil.getCityList(provAdapter.getCode(provId)));
+			cityAdapter.setData(JsonUtil.getCityList(provAdapter.getCode(provId)));
 			cityPicker.setEnable(true);
 		}
 		cityPicker.setAdapter(cityAdapter);
@@ -241,7 +248,7 @@ public class CityPickerDialog extends Dialog {
 			String cityCode = code.substring(0, 4) + "00";
 			int city_count = cityAdapter.getDataList().size();
 			for (int i = 0; i < city_count; i++) {
-				CityInfo locateInfo = cityAdapter.getDataList().get(i);
+				IdName locateInfo = cityAdapter.getDataList().get(i);
 				if (locateInfo.getId().equals(cityCode)) {
 					locCity = locateInfo.getId();
 					cityId = i;
@@ -252,17 +259,17 @@ public class CityPickerDialog extends Dialog {
 		cityPicker.setDefault(cityId);
 		Log.i(TAG, "init cityId:"+cityId);
 		if (cityId == 0) {
-			counyAdapter.setData(cityUtil.getCounyList(cityAdapter.getCode(1)));
+			counyAdapter.setData(JsonUtil.getCounyList(cityAdapter.getCode(1)));
 			counyPicker.setEnable(false);
 		} else {
-			counyAdapter.setData(cityUtil.getCounyList(cityAdapter.getCode(cityId)));
+			counyAdapter.setData(JsonUtil.getCounyList(cityAdapter.getCode(cityId)));
 			counyPicker.setEnable(true);
 		}
 		counyPicker.setAdapter(counyAdapter);
 		if (locCity != null) {
 			int couny_count = counyAdapter.getDataList().size();
 			for (int i = 0; i < couny_count; i++) {
-				CityInfo locateInfo = counyAdapter.getDataList().get(i);
+				IdName locateInfo = counyAdapter.getDataList().get(i);
 				if (locateInfo.getId().equals(code)) {
 					counyId = i;
 					break;
@@ -301,7 +308,7 @@ public class CityPickerDialog extends Dialog {
 		public void selected(boolean selected);
 	}
 
-	class CityAdapter extends ScrollerAdapter<CityInfo> {
+	class CityAdapter extends ScrollerAdapter<IdName> {
 
 		public CityAdapter(boolean isAllEnable) {
 			super(isAllEnable);

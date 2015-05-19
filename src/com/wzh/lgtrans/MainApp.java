@@ -3,7 +3,7 @@ package com.wzh.lgtrans;
 import android.app.Application;
 import android.content.Context;
 
-import com.wzh.lgtrans.view.CityUtil;
+import com.wzh.lgtrans.util.JsonUtil;
 
 /**
  * 应用启动类
@@ -22,8 +22,8 @@ public class MainApp extends Application{
 		AppConfig.loadConfigs(this);
 		initVolly(this);
 //		initImageLoader(this);
-		CityUtil.getSingleton().loadData(this);
-//		LocateUtil.getSingleton().LocCode("621002");
+		JsonUtil.loadCityData(this);
+		JsonUtil.loadCarData(this);
 	}
 
 	public static MainApp getInstance() {

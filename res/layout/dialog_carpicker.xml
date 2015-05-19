@@ -13,7 +13,7 @@
         android:orientation="horizontal" >
 
         <com.wzh.lgtrans.view.ScrollerPicker
-            android:id="@+id/sp_city_province"
+            android:id="@+id/sp_cartype_type"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="1dp"
@@ -30,7 +30,7 @@
             wzh:unitHight="40dp" />
 
         <com.wzh.lgtrans.view.ScrollerPicker
-            android:id="@+id/sp_city_city"
+            android:id="@+id/sp_cartype_long"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="1dp"
@@ -46,22 +46,6 @@
             wzh:selecredTextSize="18sp"
             wzh:unitHight="40dp" />
 
-        <com.wzh.lgtrans.view.ScrollerPicker
-            android:id="@+id/sp_city_couny"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="1dp"
-            android:layout_marginRight="1dp"
-            android:layout_weight="1"
-            wzh:itemNumber="5"
-            wzh:lineColor="#ffff6000"
-            wzh:maskHight="32dp"
-            wzh:noEmpty="true"
-            wzh:normalTextColor="#777"
-            wzh:normalTextSize="16sp"
-            wzh:selecredTextColor="#ff000000"
-            wzh:selecredTextSize="18sp"
-            wzh:unitHight="40dp" />
     </LinearLayout>
 
     <LinearLayout

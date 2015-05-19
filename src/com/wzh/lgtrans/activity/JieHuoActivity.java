@@ -9,14 +9,14 @@ import android.widget.TextView;
 import com.wzh.lgtrans.R;
 import com.wzh.lgtrans.adapter.JieHuoAdapter;
 import com.wzh.lgtrans.dialog.CityPickerDialog;
-import com.wzh.lgtrans.view.CityInfo;
+import com.wzh.lgtrans.struct.IdName;
 
 public class JieHuoActivity extends ActionBarBaseActivity {
 	private ListView listView;
 	private JieHuoAdapter jiehuoAdapter;
 	private TextView viewPoss,viewPose;
 	private Context ctx;
-	private CityInfo startCity, endCity;
+	private IdName startCity, endCity;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -25,8 +25,8 @@ public class JieHuoActivity extends ActionBarBaseActivity {
 		setContentView(R.layout.activity_jiehuo);
 		setActionBarTitel("我要接活");
 
-		startCity = new CityInfo("370783", "寿光市");
-		endCity = new CityInfo("370783", "寿光市");
+		startCity = new IdName("370783", "寿光市");
+		endCity = new IdName("370783", "寿光市");
 		
 		viewPoss=(TextView)findViewById(R.id.tv_jiehuo_poss);
 		viewPose=(TextView)findViewById(R.id.tv_jiehuo_pose);
@@ -36,10 +36,10 @@ public class JieHuoActivity extends ActionBarBaseActivity {
 
 			@Override
 			public void onClick(View v) {
-				new CityPickerDialog(ctx, startCity) {
+				new CityPickerDialog(ctx, startCity,true) {
 
 					@Override
-					public void onConfirm(CityInfo city) {
+					public void onConfirm(IdName city) {
 						startCity=city;
 						viewPoss.setText(startCity.getName());
 						dismiss();
@@ -52,10 +52,10 @@ public class JieHuoActivity extends ActionBarBaseActivity {
 
 			@Override
 			public void onClick(View v) {
-				new CityPickerDialog(ctx, endCity) {
+				new CityPickerDialog(ctx, endCity,true) {
 
 					@Override
-					public void onConfirm(CityInfo city) {
+					public void onConfirm(IdName city) {
 						endCity=city;
 						viewPose.setText(endCity.getName());
 						dismiss();

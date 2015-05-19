@@ -1,12 +1,11 @@
 package com.wzh.lgtrans.adapter;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
@@ -14,7 +13,7 @@ import android.widget.TextView;
 
 import com.wzh.lgtrans.R;
 import com.wzh.lgtrans.dialog.CityPickerDialog;
-import com.wzh.lgtrans.view.CityInfo;
+import com.wzh.lgtrans.struct.IdName;
 
 /**
  * 分类列表的适配器
@@ -23,13 +22,13 @@ import com.wzh.lgtrans.view.CityInfo;
  * @version 创建时间：2014年3月18日
  */
 public class BusiCityAdapter extends BaseAdapter {
-	
-	private static final String TAG="BusiCityAdapter";
+
+	private static final String TAG = "BusiCityAdapter";
 	private Context ctx;
 	/**
 	 * 存放内容数据的数组list
 	 */
-	 public List<CityInfo> cityList = new ArrayList<CityInfo>();
+	private List<IdName> cityList;
 	/**
 	 * 实例化布局的对象
 	 */
@@ -38,14 +37,10 @@ public class BusiCityAdapter extends BaseAdapter {
 	public BusiCityAdapter(Context ctx) {
 		this.ctx = ctx;
 		mInflater = LayoutInflater.from(ctx);
-		initData();
 	}
 
-	private void initData(){
-		cityList.clear();
-		for(int i=0;i<10;i++){
-			cityList.add(new CityInfo());
-		}
+	public void setDataList(List<IdName> list) {
+		cityList = list;
 	}
 
 	@Override
@@ -71,34 +66,40 @@ public class BusiCityAdapter extends BaseAdapter {
 		} else {
 			holder = new Holder();
 			convertView = mInflater.inflate(R.layout.item_list_busicity, null);
-			final CityInfo cityInfo=cityList.get(position);
 			holder.title = (TextView) convertView.findViewById(R.id.tv_item_busicity_title);
-			if(!cityInfo.isNull()){
-				holder.title.setText(cityInfo.getName());
+			holder.btn = (ImageView) convertView.findViewById(R.id.iv_item_busicity_rdel);
+			convertView.setTag(holder);
+		}
+		final IdName cityInfo = cityList.get(position);
+		OnClickListener clickListener = new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				new CityPickerDialog(ctx, cityInfo, false) {
+					@Override
+					public void onConfirm(IdName city) {
+						cityInfo.clone(city);
+						notifyDataSetChanged();
+						dismiss();
+					}
+				}.show();
 			}
-			Log.i(TAG, "city title:"+cityInfo.getName());
-			holder.title.setOnClickListener(new View.OnClickListener() {
+		};
+		if (!cityInfo.isNull()) {
+			holder.title.setText(cityInfo.getName());
+			holder.btn.setImageResource(R.drawable.ic_arrow_r);
+			holder.btn.setOnClickListener(new OnClickListener() {
 
 				@Override
 				public void onClick(View v) {
-					new CityPickerDialog(ctx, cityInfo) {
+					// TODO Auto-generated method stub
 
-						@Override
-						public void onConfirm(CityInfo city) {
-							cityInfo.clone(city);
-							Log.i(TAG, "city:"+city.toString());
-							Log.i(TAG, "cityInfo:"+cityInfo.toString());
-							Log.i(TAG, "cityList["+position+"]:"+cityList.get(position).toString());
-							dismiss();
-							BusiCityAdapter.this.notifyDataSetChanged();
-							BusiCityAdapter.this.notifyDataSetInvalidated();
-						}
-
-					}.show();
 				}
 			});
-			convertView.setTag(holder);
+		} else {
+			holder.btn.setOnClickListener(clickListener);
 		}
+		holder.title.setOnClickListener(clickListener);
 		return convertView;
 	}
 
@@ -107,6 +108,6 @@ public class BusiCityAdapter extends BaseAdapter {
 	 */
 	class Holder {
 		TextView title;
-		ImageView del;
+		ImageView btn;
 	}
 }
