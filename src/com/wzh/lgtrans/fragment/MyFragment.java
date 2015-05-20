@@ -10,10 +10,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.wzh.lgtrans.R;
+import com.wzh.lgtrans.activity.InviteActivity;
+import com.wzh.lgtrans.activity.MyHuodanActivity;
 import com.wzh.lgtrans.activity.MyInfoActivity;
 
 /**
- * 购物车界面的fragment
+ * 我的资料界面的fragment
  * 
  * @author 王植桦 ewangzhihua@yeah.net
  * @version 创建时间：2014年3月19日
@@ -43,10 +45,26 @@ public class MyFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View mainView = mInflater.inflate(R.layout.fragment_my, container, false);
 		mainView.findViewById(R.id.lay_lin_myinfo).setOnClickListener(new View.OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
-				Intent intent=new Intent(ctx, MyInfoActivity.class);
+				Intent intent = new Intent(ctx, MyInfoActivity.class);
+				ctx.startActivity(intent);
+			}
+		});
+		mainView.findViewById(R.id.lay_lin_my_huodan).setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(ctx, MyHuodanActivity.class);
+				ctx.startActivity(intent);
+			}
+		});
+		mainView.findViewById(R.id.lay_lin_my_invite).setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(ctx, InviteActivity.class);
 				ctx.startActivity(intent);
 			}
 		});

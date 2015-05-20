@@ -1,8 +1,14 @@
 package com.wzh.lgtrans.activity;
 
+import java.util.ArrayList;
+
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.database.Cursor;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,61 +16,120 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.wzh.lgtrans.R;
 
 public class InviteActivity extends ActionBarBaseActivity {
-	private ListView contactList;
+	private ListView contactView;
+	private ContactAdapter contactAdapter;
+	private ProgressBar progressBar;
+	private ContactTask contactTask;
+	private final int MSG_DATA_CHANGE = 0x001;
+
+	@SuppressLint("HandlerLeak")
+	Handler handler = new Handler() {
+
+		@Override
+		public void handleMessage(Message msg) {
+			super.handleMessage(msg);
+			switch (msg.what) {
+			case MSG_DATA_CHANGE:
+				contactAdapter.notifyDataSetChanged();
+				break;
+			default:
+				break;
+			}
+		}
+	};
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_invite);
-		contactList = (ListView) findViewById(R.id.list_invite_contact);
+		setActionBarTitel("邀请朋友");
+		
+		contactView = (ListView) findViewById(R.id.list_invite_contact);
+		progressBar = (ProgressBar) findViewById(R.id.pb_invite);
+		contactAdapter = new ContactAdapter(this);
+		contactView.setAdapter(contactAdapter);
 	}
 
-	public void getContact() {
-		// 获得所有的联系人
-		Cursor cur = getContentResolver().query(ContactsContract.Contacts.CONTENT_URI, null, null, null, null);
-		// 循环遍历
-		if (cur.moveToFirst()) {
-			int idColumn = cur.getColumnIndex(ContactsContract.Contacts._ID);
-			int displayNameColumn = cur.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME);
-			do {
-				// 获得联系人的ID号
-				String contactId = cur.getString(idColumn);
-				// 获得联系人姓名
-				String disPlayName = cur.getString(displayNameColumn);
-				// 查看该联系人有多少个电话号码。如果没有这返回值为0
-				int phoneCount = cur.getInt(cur.getColumnIndex(ContactsContract.Contacts.HAS_PHONE_NUMBER));
-				if (phoneCount > 0) {
-					// 获得联系人的电话号码
-					Cursor phones = getContentResolver().query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
-							null, ContactsContract.CommonDataKinds.Phone.CONTACT_ID + " = " + contactId, null, null);
-					Cursor mobilePhone = getContentResolver().query(
-							ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
-							null,ContactsContract.CommonDataKinds.Phone.CONTACT_ID + " = " + contactId + " and "
-									+ ContactsContract.CommonDataKinds.Phone.TYPE + "="
-									+ ContactsContract.CommonDataKinds.Phone.TYPE_MOBILE, null, null);
-					if (phones.moveToFirst()) {
-						do {
-							// 遍历所有的电话号码
-							String phoneNumber = phones.getString(phones
-									.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
-							System.out.println(phoneNumber);
-						} while (phones.moveToNext());
-					}
-				}
-			} while (cur.moveToNext());
+	@Override
+	protected void onResume() {
+		if (contactTask == null) {
+			contactTask = new ContactTask();
 		}
+		contactTask.execute();
+		super.onResume();
+	}
+
+	@Override
+	protected void onPause() {
+		if (contactTask != null) {
+			contactTask.cancel(true);
+			contactTask = null;
+		}
+		super.onPause();
+	}
+
+	// public void getContact() {
+	// contactList.clear();
+	// Cursor cursor =
+	// getContentResolver().query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
+	// null, null,
+	// null, null);
+	// while (cursor.moveToNext()) {
+	// People people = new People();
+	// people.name =
+	// cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME));
+	// people.mobilePhone =
+	// cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
+	// contactList.add(people);
+	// }
+	// cursor.close();
+	// }
+
+	class ContactTask extends AsyncTask<Void, Void, Void> {
+		private ArrayList<People> list = new ArrayList<People>();
+
+		@Override
+		protected void onPreExecute() {
+			list.clear();
+			progressBar.setVisibility(View.VISIBLE);
+		}
+
+		@Override
+		protected Void doInBackground(Void... params) {
+			Cursor cursor = getContentResolver().query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null, null,
+					null, null);
+			while (cursor.moveToNext()) {
+				People people = new People();
+				people.name = cursor.getString(cursor
+						.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME));
+				people.mobilePhone = cursor.getString(cursor
+						.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
+				list.add(people);
+			}
+			cursor.close();
+			return null;
+		}
+
+		@Override
+		protected void onPostExecute(Void result) {
+			contactAdapter.setDataList(list);
+			contactAdapter.notifyDataSetChanged();
+//			handler.sendEmptyMessage(MSG_DATA_CHANGE);
+			progressBar.setVisibility(View.GONE);
+		}
+
 	}
 
 	class ContactAdapter extends BaseAdapter {
-		/**
-		 * 存放内容数据的数组list
-		 */
-		// public ArrayList<ItemCatg> mList = new ArrayList<ItemCatg>();
+
+		private ArrayList<People> dataList = new ArrayList<People>();
+
 		/**
 		 * 实例化布局的对象
 		 */
@@ -74,23 +139,23 @@ public class InviteActivity extends ActionBarBaseActivity {
 			mInflater = LayoutInflater.from(ctx);
 		}
 
-		// public void setContentList(ArrayList<ItemCatg> list){
-		// mList=list;
-		// }
+		public void setDataList(ArrayList<People> list) {
+			dataList = list;
+		}
 
 		@Override
 		public int getCount() {
-			return 10;
+			return dataList.size();
 		}
 
 		@Override
 		public Object getItem(int position) {
-			return null;
+			return position;
 		}
 
 		@Override
 		public long getItemId(int position) {
-			return 0;
+			return position;
 		}
 
 		@Override
@@ -100,15 +165,14 @@ public class InviteActivity extends ActionBarBaseActivity {
 				holder = (Holder) convertView.getTag();
 			} else {
 				holder = new Holder();
-				convertView = mInflater.inflate(R.layout.item_list_myhuodan_un, null);
-				// holder.title=(TextView)convertView.findViewById(R.id.tv_list_catg_title);
-				// holder.subtitle=(TextView)convertView.findViewById(R.id.tv_list_catg_subtitle);
-				// holder.img=(ImageView)convertView.findViewById(R.id.iv_list_catg_cover);
+				convertView = mInflater.inflate(R.layout.item_list_invite, null);
+				holder.name = (TextView) convertView.findViewById(R.id.tv_item_invite_name);
+				holder.phone = (TextView) convertView.findViewById(R.id.tv_item_invite_phone);
 				convertView.setTag(holder);
 			}
-			// ItemCatg item=mList.get(position);
-			// holder.title.setText(item.title);
-			// holder.subtitle.setText(item.subtitle);
+			People people = dataList.get(position);
+			holder.name.setText(people.name);
+			holder.phone.setText(people.mobilePhone);
 			return convertView;
 		}
 
@@ -116,10 +180,24 @@ public class InviteActivity extends ActionBarBaseActivity {
 		 * view的存放类
 		 */
 		class Holder {
-			TextView title;
-			TextView subtitle;
+			TextView name;
+			TextView phone;
 			ImageView img;
 		}
+	}
+
+	class People {
+		String name;
+		String mobilePhone;
+
+		public People() {
+		}
+
+		@Override
+		public String toString() {
+			return "name=" + name + ",mobilePhone=" + mobilePhone;
+		}
+
 	}
 
 }

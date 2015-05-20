@@ -78,6 +78,9 @@
         <activity
             android:name="com.wzh.lgtrans.activity.BusiCityActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name="com.wzh.lgtrans.activity.InviteActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

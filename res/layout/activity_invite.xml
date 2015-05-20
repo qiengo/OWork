@@ -5,16 +5,28 @@
     android:gravity="center_horizontal"
     android:orientation="vertical" >
 
-    <ListView
-        android:id="@+id/list_invite_contact"
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1" />
+        android:layout_weight="1" >
+
+        <ListView
+            android:id="@+id/list_invite_contact"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <ProgressBar
+            android:id="@+id/pb_invite"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone" />
+    </FrameLayout>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="确定" />
-
+        android:text="直接拨打电话号码" />
 
 </LinearLayout>
