@@ -1,0 +1,18 @@
+{
+    "banner_img": [{
+        "width": 592,
+        "height": 296,
+        "url": "http://192.168.1.20/an_client/home/201404042.jpg",
+        "content": ""
+    }, {
+        "width": 592,
+        "height": 296,
+        "url": "http://192.168.1.20/an_client/home/201404043.jpg",
+        "content": ""
+    }, {
+        "width": 592,
+        "height": 296,
+        "url": "http://192.168.1.20/an_client/home/201404041.jpg",
+        "content": ""
+    }]
+}

@@ -64,9 +64,6 @@
             android:name="com.wzh.lgtrans.activity.Register3Activity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.wzh.lgtrans.activity.TestActivity"
-            android:screenOrientation="portrait" />
-        <activity
             android:name="com.wzh.lgtrans.activity.QiangSucActivity"
             android:screenOrientation="portrait" />
         <activity
@@ -80,6 +77,9 @@
             android:screenOrientation="portrait" />
         <activity
             android:name="com.wzh.lgtrans.activity.InviteActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.wzh.lgtrans.activity.AboutUsActivity"
             android:screenOrientation="portrait" />
     </application>
 

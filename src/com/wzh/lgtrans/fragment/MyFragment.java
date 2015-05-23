@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.wzh.lgtrans.R;
+import com.wzh.lgtrans.activity.AboutUsActivity;
 import com.wzh.lgtrans.activity.InviteActivity;
 import com.wzh.lgtrans.activity.MyHuodanActivity;
 import com.wzh.lgtrans.activity.MyInfoActivity;
@@ -65,6 +66,14 @@ public class MyFragment extends Fragment {
 			@Override
 			public void onClick(View v) {
 				Intent intent = new Intent(ctx, InviteActivity.class);
+				ctx.startActivity(intent);
+			}
+		});
+		mainView.findViewById(R.id.lay_lin_my_about).setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(ctx, AboutUsActivity.class);
 				ctx.startActivity(intent);
 			}
 		});

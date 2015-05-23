@@ -33,6 +33,8 @@ public class AppConfig {
 	 */
 	private static final String FILE_FOLDER_STR = "wzh_cwt";
 	private static final String TEMP_FOLDER_STR = FILE_FOLDER_STR+"/temp";
+	public static final String CACHE_FOLDER =FILE_FOLDER_STR;
+	public static final String SERVER_HOST="http://10.0.7.233";
 	public static File FILE_FOLDER_DIR;
 	public static File TEMP_FOLDER_DIR;
 

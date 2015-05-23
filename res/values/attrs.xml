@@ -17,5 +17,21 @@
         <attr name="fontColor" format="color" />
         <attr name="fontSize" format="dimension" />
     </declare-styleable>
+    <declare-styleable name="RoundedImageView">
+        <attr name="corner_radius" format="dimension" />
+        <attr name="border_width" format="dimension" />
+        <attr name="border_color" format="color" />
+        <attr name="round_background" format="boolean" />
+        <attr name="is_oval" format="boolean" />
+        <attr name="android:scaleType" />
+    </declare-styleable>
+    <declare-styleable name="ClickMaskRatioImageView">
+        <attr name="ratio" format="float" />
+        <attr name="enableMask" format="boolean" />
+        <attr name="maskColor" format="color" />
+    </declare-styleable>
+    <declare-styleable name="SmoothViewPager">
+        <attr name="autoSwitch" format="boolean" />
+    </declare-styleable>
 
 </resources>
