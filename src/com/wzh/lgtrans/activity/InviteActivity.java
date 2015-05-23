@@ -3,7 +3,10 @@ package com.wzh.lgtrans.activity;
 import java.util.ArrayList;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.database.Cursor;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -14,7 +17,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -49,7 +51,7 @@ public class InviteActivity extends ActionBarBaseActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_invite);
 		setActionBarTitel("邀请朋友");
-		
+
 		contactView = (ListView) findViewById(R.id.list_invite_contact);
 		progressBar = (ProgressBar) findViewById(R.id.pb_invite);
 		contactAdapter = new ContactAdapter(this);
@@ -120,7 +122,7 @@ public class InviteActivity extends ActionBarBaseActivity {
 		protected void onPostExecute(Void result) {
 			contactAdapter.setDataList(list);
 			contactAdapter.notifyDataSetChanged();
-//			handler.sendEmptyMessage(MSG_DATA_CHANGE);
+			// handler.sendEmptyMessage(MSG_DATA_CHANGE);
 			progressBar.setVisibility(View.GONE);
 		}
 
@@ -166,13 +168,37 @@ public class InviteActivity extends ActionBarBaseActivity {
 			} else {
 				holder = new Holder();
 				convertView = mInflater.inflate(R.layout.item_list_invite, null);
-				holder.name = (TextView) convertView.findViewById(R.id.tv_item_invite_name);
-				holder.phone = (TextView) convertView.findViewById(R.id.tv_item_invite_phone);
+				holder.nameView = (TextView) convertView.findViewById(R.id.tv_item_invite_name);
+				holder.phoneView = (TextView) convertView.findViewById(R.id.tv_item_invite_phone);
+				holder.inviteView = (TextView) convertView.findViewById(R.id.tv_item_invite_invite);
 				convertView.setTag(holder);
 			}
 			People people = dataList.get(position);
-			holder.name.setText(people.name);
-			holder.phone.setText(people.mobilePhone);
+			holder.nameView.setText(people.name);
+			holder.phoneView.setText(people.mobilePhone);
+			holder.inviteView.setOnClickListener(new View.OnClickListener() {
+
+				@Override
+				public void onClick(View v) {
+					AlertDialog.Builder builder = new Builder(InviteActivity.this);
+					builder.setMessage("诚物通将发送一条消息给被推荐人（若有安全软件提醒，请点击‘允许’）")
+					.setTitle("邀请好友")
+							.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+
+								@Override
+								public void onClick(DialogInterface dialog, int which) {
+									// TODO Auto-generated method stub
+
+								}
+							}).setNegativeButton("取消", new DialogInterface.OnClickListener() {
+								@Override
+								public void onClick(DialogInterface dialog, int which) {
+									dialog.dismiss();
+								}
+							});
+					builder.create().show();
+				}
+			});
 			return convertView;
 		}
 
@@ -180,9 +206,9 @@ public class InviteActivity extends ActionBarBaseActivity {
 		 * view的存放类
 		 */
 		class Holder {
-			TextView name;
-			TextView phone;
-			ImageView img;
+			TextView nameView;
+			TextView phoneView;
+			TextView inviteView;
 		}
 	}
 
