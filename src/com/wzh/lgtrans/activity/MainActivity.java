@@ -41,6 +41,27 @@ public class MainActivity extends FragmentActivity {
 		fragmentList.add(new MyFragment());
 		mPager.setAdapter(new MyFragmentPagerAdapter(getSupportFragmentManager(), fragmentList));
 
+		findViewById(R.id.lay_lin_main_more).setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				mPager.setCurrentItem(0);
+			}
+		});
+		ivHome.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				mPager.setCurrentItem(1);
+			}
+		});
+		findViewById(R.id.lay_lin_main_my).setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				mPager.setCurrentItem(2);
+			}
+		});
 		mPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 
 			@Override

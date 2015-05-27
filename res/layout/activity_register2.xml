@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:slideswitch="http://schemas.android.com/apk/res/com.wzh.lgtrans"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg_grey"
@@ -87,6 +88,11 @@
             android:layout_width="1dp"
             android:layout_height="match_parent"
             android:background="@color/divider_gray" />
+
+        <Spinner
+            android:id="@+id/sp_reg2_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
         <EditText
             android:layout_width="0dp"
@@ -196,6 +202,7 @@
             android:background="@null"
             android:hint="必填"
             android:textSize="18sp" />
+
         <ImageView
             android:layout_width="15dp"
             android:layout_height="15dp"
@@ -205,8 +212,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         android:gravity="center_vertical"
+        android:padding="8dp"
         android:orientation="horizontal" >
 
         <TextView
@@ -216,10 +223,13 @@
             android:text="承运室内配送"
             android:textSize="18sp" />
 
-        <ImageView
-            android:layout_width="60dp"
-            android:layout_height="30dp"
-            android:src="@drawable/ic_state_off" />
+        <com.wzh.slideswitch.SlideSwitch
+            android:id="@+id/swit3"
+            android:layout_width="50dp"
+            android:layout_height="25dp"
+            slideswitch:isOpen="true"
+            slideswitch:shape="circle"
+            slideswitch:themeColor="@color/btn_blue" />
     </LinearLayout>
 
     <TextView

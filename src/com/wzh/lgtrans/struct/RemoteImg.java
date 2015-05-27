@@ -53,7 +53,9 @@ public class RemoteImg {
 		return content;
 	}
 	public float getRatio(){
-		return width/(float)height;
+		float ratio=width/(float)height;
+		System.out.println("width/(float)height=ratio "+width+"/"+height+"="+ratio);
+		return ratio;
 	}
 	public void fromJsonObject(JSONObject imgObject){
 		if(imgObject!=null){

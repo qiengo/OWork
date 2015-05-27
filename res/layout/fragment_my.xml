@@ -82,12 +82,32 @@
                     android:gravity="center_vertical"
                     android:orientation="vertical" >
 
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="我的资料"
-                        android:textColor="@color/text_black"
-                        android:textSize="18sp" />
+                        android:orientation="horizontal" 
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="我的资料"
+                            android:textColor="@color/text_black"
+                            android:textSize="18sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:text="尚未认证"
+                            android:background="@drawable/bg_main_box_sel"
+                            android:textColor="#fff"
+                            android:paddingTop="2dp"
+                            android:paddingBottom="2dp"
+                            android:paddingLeft="5dp"
+                            android:paddingRight="5dp"
+                            android:textSize="14sp" />
+                    </LinearLayout>
 
                     <TextView
                         android:layout_width="wrap_content"

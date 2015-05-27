@@ -1,6 +1,8 @@
 package com.wzh.lgtrans.activity;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
@@ -13,10 +15,12 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.provider.ContactsContract;
+import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -29,6 +33,7 @@ public class InviteActivity extends ActionBarBaseActivity {
 	private ProgressBar progressBar;
 	private ContactTask contactTask;
 	private final int MSG_DATA_CHANGE = 0x001;
+	private Context ctx;
 
 	@SuppressLint("HandlerLeak")
 	Handler handler = new Handler() {
@@ -51,9 +56,34 @@ public class InviteActivity extends ActionBarBaseActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_invite);
 		setActionBarTitel("邀请朋友");
-
+		ctx = this;
 		contactView = (ListView) findViewById(R.id.list_invite_contact);
 		progressBar = (ProgressBar) findViewById(R.id.pb_invite);
+		findViewById(R.id.tv_invite_input).setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				final EditText phoneInput = new EditText(ctx);
+				phoneInput.setHint("请输入电话号码");
+				phoneInput.setInputType(InputType.TYPE_CLASS_PHONE);
+				new AlertDialog.Builder(ctx).setTitle("请输入邀请电话").setView(phoneInput)
+						.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+
+							@Override
+							public void onClick(DialogInterface dialog, int which) {
+								String number = phoneInput.getText().toString();
+								System.out.println(number);
+							}
+						}).setNegativeButton("取消", new DialogInterface.OnClickListener() {
+
+							@Override
+							public void onClick(DialogInterface dialog, int which) {
+								dialog.dismiss();
+							}
+						}).show();
+			}
+		});
+
 		contactAdapter = new ContactAdapter(this);
 		contactView.setAdapter(contactAdapter);
 	}
@@ -115,6 +145,14 @@ public class InviteActivity extends ActionBarBaseActivity {
 				list.add(people);
 			}
 			cursor.close();
+			Comparator<People> comparator=new Comparator<People>() {
+
+				@Override
+				public int compare(People lhs, People rhs) {
+					return lhs.sortIndex-rhs.sortIndex;
+				}
+			};
+			Collections.sort(list, comparator);
 			return null;
 		}
 
@@ -181,13 +219,11 @@ public class InviteActivity extends ActionBarBaseActivity {
 				@Override
 				public void onClick(View v) {
 					AlertDialog.Builder builder = new Builder(InviteActivity.this);
-					builder.setMessage("诚物通将发送一条消息给被推荐人（若有安全软件提醒，请点击‘允许’）")
-					.setTitle("邀请好友")
+					builder.setMessage("诚物通将发送一条消息给被推荐人（若有安全软件提醒，请点击‘允许’）").setTitle("邀请好友")
 							.setPositiveButton("确定", new DialogInterface.OnClickListener() {
 
 								@Override
 								public void onClick(DialogInterface dialog, int which) {
-									// TODO Auto-generated method stub
 
 								}
 							}).setNegativeButton("取消", new DialogInterface.OnClickListener() {
@@ -215,6 +251,7 @@ public class InviteActivity extends ActionBarBaseActivity {
 	class People {
 		String name;
 		String mobilePhone;
+		int sortIndex = 5;
 
 		public People() {
 		}

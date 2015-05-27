@@ -71,7 +71,7 @@ public class SmoothViewPager extends ViewPager {
 		TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.SmoothViewPager);
 		EnableAutoSwitch=a.getBoolean(R.styleable.SmoothViewPager_autoSwitch, false);
 		a.recycle();
-		varm = new ViewAspectRatioMeasurer(2);
+		varm = new ViewAspectRatioMeasurer(1.7811);
 	       
 //		 /*主要代码段*/  
 //        try {               
@@ -151,15 +151,15 @@ public class SmoothViewPager extends ViewPager {
 	
 	
 
-//	@Override
-//	protected void onMeasure(int arg0, int arg1) {
-//		if(varm.getRatio()>0){
-//			varm.measure(arg0, arg1);
-//			setMeasuredDimension(varm.getMeasuredWidth(), varm.getMeasuredHeight());
-//		}else{
-//			super.onMeasure(arg0, arg1);
-//		}
-//	}
+	@Override
+	protected void onMeasure(int arg0, int arg1) {
+		if(varm.getRatio()>0){
+			varm.measure(arg0, arg1);
+			setMeasuredDimension(varm.getMeasuredWidth(), varm.getMeasuredHeight());
+		}else{
+			super.onMeasure(arg0, arg1);
+		}
+	}
 	
 	/**
 	 * 切换到下一页

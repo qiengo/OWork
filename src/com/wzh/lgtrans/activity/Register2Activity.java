@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.wzh.lgtrans.R;
@@ -18,6 +20,7 @@ public class Register2Activity extends ActionBarBaseActivity {
 	private TextView cityView,carTypeView;
 	private String carType;
 	private String carLong;
+	private static final String[] m_arr = {"粤","鲁","冀"};
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +31,13 @@ public class Register2Activity extends ActionBarBaseActivity {
 		initData();
 		cityView=(TextView)findViewById(R.id.tv_reg2_busi_city);
 		carTypeView=(TextView)findViewById(R.id.tv_reg2_car_type);
+		
+		Spinner _spin = (Spinner)findViewById(R.id.sp_reg2_number);
+        ArrayAdapter<String> ada = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, m_arr);
+        ada.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        _spin.setAdapter(ada);
+
+        
 		cityView.setOnClickListener(new View.OnClickListener() {
 
 			@Override

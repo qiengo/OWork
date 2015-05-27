@@ -176,6 +176,7 @@ public class CityPickerDialog extends Dialog {
 			}
 		});
 
+		
 		findViewById(R.id.btn_citypicker_cancel).setOnClickListener(new View.OnClickListener() {
 
 			@Override

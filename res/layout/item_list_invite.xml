@@ -18,19 +18,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
-            android:padding="3dp"
             android:text="name"
             android:textColor="@color/text_black"
-            android:textSize="16sp" />
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/tv_item_invite_phone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
-            android:padding="3dp"
             android:text="number"
-            android:textColor="@color/text_black"
+            android:textColor="@color/text_gray"
             android:textSize="16sp" />
     </LinearLayout>
 
