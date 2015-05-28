@@ -9,7 +9,7 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 
 /**
- * 应用配置类 包含应用的各种全局参数变量
+ * 应用配置 包含应用的各种参数变量
  * 
  * @author Administrator
  *
@@ -39,17 +39,17 @@ public class AppConfig {
 	public static File TEMP_FOLDER_DIR;
 
 	/**
-	 * 是否使用本地json文件，用于演示。
+	 * 是否使用本地json文件，用于演示�??
 	 */
 	public static final boolean USE_LOCAL_JSON = true;
 	/**
-	 * 获取百度地图服务器数据用到的数据。
+	 * 获取百度地图服务器数据用到的数据�?
 	 */
 	public static final String MAP_AK = "qKjfG1BtWPG4poMGvBsEc6ui";
 	public static final int MAP_TABLE_ID = 61558;
 
 	/**
-	 * 启动app是加载设备信息。 load the configuration when running
+	 * 启动app是加载设备信息�?? load the configuration when running
 	 * 
 	 * @param context
 	 */

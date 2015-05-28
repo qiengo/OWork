@@ -22,8 +22,8 @@ import com.android.volley.toolbox.Volley;
 
 
 /**
- * Http的帮助类，封装了网络通信的方法。<br>
- * 封装了访问网络的异步线程机制，并且可以处理多次同时访问请求的调度。
+ * Http的帮助类，封装了网络通信的方法<br>
+ * 封装了访问网络的异步线程机制，并且可以处理多次同时访问请求的调度
  * Helper class that is used to provide references to initialized RequestQueue(s) and ImageLoader(s)
  * 
  * @author Ognyan Bankov
@@ -35,12 +35,8 @@ public class MyVolley {
     
     private MyVolley() {}
 
-    /**
-     * 初始化网络通信类
-     * @param context
-     */
     public static void init(Context context) {
-    	//初始化网络请求队列，用于管理所有的网络请求，整个app只使用一个队列。
+    	//初始化网络请求队列，用于管理�?有的网络请求，整个app只使用一个队列�??
         mRequestQueue = Volley.newRequestQueue(context);
     }
 

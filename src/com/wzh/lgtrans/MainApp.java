@@ -13,8 +13,6 @@ import com.wzh.lgtrans.util.JsonUtil;
 /**
  * 应用启动类
  * 该类中加载全局配置参数
- * @author 王植桦 ewangzhihua@yeah.net
- * @version 创建时间：2014年3月14日
  *
  */
 public class MainApp extends Application{
@@ -39,9 +37,9 @@ public class MainApp extends Application{
 		MyVolley.init(context);
 	}
 	/**
-	 * 初始化图像加载类，设置缓存参数<br>
-	 * 如果开启时有闪屏动画，则在此界面初始化Loader，如果没有则在TbApp的创建函数中初始化<br>
-	 * 在SplashActivity中异步调用。
+	 * 初始化图像加载类，设置缓存参�?<br>
+	 * 如果�?启时有闪屏动画，则在此界面初始化Loader，如果没有则在TbApp的创建函数中初始�?<br>
+	 * 在SplashActivity中异步调用�??
 	 * @param context
 	 */
 	public void initImageLoader(Context context) {
@@ -53,12 +51,12 @@ public class MainApp extends Application{
 		DisplayImageOptions defaultOptions = new DisplayImageOptions.Builder()
 			.cacheInMemory(true)//启用内存缓存
 			.cacheOnDisc(true)//启用硬盘缓存
-			.considerExifParams(true)//是否考虑EXIF标识符
+			.considerExifParams(true)//是否考虑EXIF标识�?
 			.build();
 		ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(context)
-				.denyCacheImageMultipleSizesInMemory()//相同名字只存一份
+				.denyCacheImageMultipleSizesInMemory()//相同名字只存�?�?
 				.discCacheFileNameGenerator(new Md5FileNameGenerator())//使用MD5命名方法
-				.tasksProcessingOrder(QueueProcessingType.LIFO)//后进先出的处理顺序
+				.tasksProcessingOrder(QueueProcessingType.LIFO)//后进先出的处理顺�?
 				.defaultDisplayImageOptions(defaultOptions)//使用默认显示选项
 				.memoryCacheSizePercentage(30)//30% memory cache 使用30%内寸缓存
 				.discCacheSize(20*1024*1024)//20M disk cache 使用20M硬盘缓存
