@@ -25,11 +25,14 @@ import com.wzh.lgtrans.R;
 import com.wzh.lgtrans.adapter.HuodanAdapter;
 import com.wzh.lgtrans.struct.HuodanInfo;
 import com.wzh.lgtrans.util.IOUtils;
+import com.wzh.lgtrans.view.UnderlineTabView;
 
 public class MyHuodanActivity extends ActionBarBaseActivity {
 	private final String huodanUrl = AppConfig.SERVER_HOST + "/wzh/huodan.txt";
 	private ListView listView;
 	private HuodanAdapter huodanAdapter;
+	private UnderlineTabView tabHeader;
+	private int curType=1;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -37,8 +40,9 @@ public class MyHuodanActivity extends ActionBarBaseActivity {
 		setContentView(R.layout.activity_myhuodan);
 		setActionBarTitel("我的货单");
 
-		huodanAdapter = new HuodanAdapter(this);
 		listView = (ListView) findViewById(R.id.list_myhuodan);
+		tabHeader=(UnderlineTabView)findViewById(R.id.header_myhuodan);
+		huodanAdapter = new HuodanAdapter(this);
 		listView.setAdapter(huodanAdapter);
 		listView.setOnItemClickListener(new OnItemClickListener() {
 
@@ -48,8 +52,15 @@ public class MyHuodanActivity extends ActionBarBaseActivity {
 				startActivity(intent);
 			}
 		});
-		
-		getServerInfo();
+		tabHeader.setOnChangeListener(new UnderlineTabView.OnChangeListener() {
+			
+			@Override
+			public void onChange(int pos) {
+				curType=pos;
+			}
+		});
+//		getServerInfo();
+		getLocalInfo();
 	}
 
 	private Response.Listener<JSONObject> successlistener = new Response.Listener<JSONObject>() {
@@ -85,7 +96,7 @@ public class MyHuodanActivity extends ActionBarBaseActivity {
 	 */
 	private void getLocalInfo() {
 		try {
-			JSONObject obj = new JSONObject(IOUtils.loadJSONFromAsset(this, "home.txt"));
+			JSONObject obj = new JSONObject(IOUtils.loadJSONFromAsset(this, "huodan.txt"));
 			successlistener.onResponse(obj);
 		} catch (JSONException e) {
 			e.printStackTrace();

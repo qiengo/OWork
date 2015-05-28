@@ -82,64 +82,56 @@
                 android:orientation="horizontal"
                 android:weightSum="2" >
 
-                <RelativeLayout
+                <LinearLayout
+                    android:id="@+id/lay_lin_kongche"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1" >
+                    android:layout_weight="1"
+                    android:background="@drawable/selector_white_bule"
+                    android:clickable="true"
+                    android:gravity="center"
+                    android:orientation="vertical" >
 
-                    <LinearLayout
-                        android:id="@+id/lay_lin_kongche"
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/ic_btn_kongche" />
+
+                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:gravity="center_horizontal"
-                        android:orientation="vertical" >
-
-                        <ImageView
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
-                            android:src="@drawable/ic_btn_kongche" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="空车上报"
-                            android:textColor="#000"
-                            android:textSize="16sp" />
-                    </LinearLayout>
-                </RelativeLayout>
+                        android:text="空车上报"
+                        android:textColor="#000"
+                        android:textSize="16sp" />
+                </LinearLayout>
 
                 <View
                     android:layout_width="@dimen/divider_line_width"
                     android:layout_height="90dp"
                     android:background="@color/divider_gray" />
 
-                <RelativeLayout
+                <LinearLayout
+                    android:id="@+id/lay_lin_weizhang"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1" >
+                    android:layout_weight="1"
+                    android:background="@drawable/selector_white_bule"
+                    android:clickable="true"
+                    android:gravity="center"
+                    android:orientation="vertical" >
 
-                    <LinearLayout
-                        android:id="@+id/lay_lin_weizhang"
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/ic_btn_weizhang" />
+
+                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:gravity="center_horizontal"
-                        android:orientation="vertical" >
-
-                        <ImageView
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
-                            android:src="@drawable/ic_btn_weizhang" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="违章查询"
-                            android:textColor="#000"
-                            android:textSize="16sp" />
-                    </LinearLayout>
-                </RelativeLayout>
+                        android:text="违章查询"
+                        android:textColor="#000"
+                        android:textSize="16sp" />
+                </LinearLayout>
             </LinearLayout>
 
             <View
@@ -154,64 +146,56 @@
                 android:orientation="horizontal"
                 android:weightSum="2" >
 
-                <RelativeLayout
+                <LinearLayout
+                    android:id="@+id/lay_lin_invite"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1" >
+                    android:layout_weight="1"
+                    android:background="@drawable/selector_white_bule"
+                    android:clickable="true"
+                    android:gravity="center"
+                    android:orientation="vertical" >
 
-                    <LinearLayout
-                        android:id="@+id/lay_lin_invite"
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/ic_btn_yaoqing" />
+
+                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:gravity="center_horizontal"
-                        android:orientation="vertical" >
-
-                        <ImageView
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
-                            android:src="@drawable/ic_btn_yaoqing" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="邀请朋友 "
-                            android:textColor="#000"
-                            android:textSize="16sp" />
-                    </LinearLayout>
-                </RelativeLayout>
+                        android:text="邀请朋友 "
+                        android:textColor="#000"
+                        android:textSize="16sp" />
+                </LinearLayout>
 
                 <View
                     android:layout_width="@dimen/divider_line_width"
                     android:layout_height="90dp"
                     android:background="@color/divider_gray" />
 
-                <RelativeLayout
+                <LinearLayout
+                    android:id="@+id/lay_lin_chexian"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1" >
+                    android:layout_weight="1"
+                    android:background="@drawable/selector_white_bule"
+                    android:clickable="true"
+                    android:gravity="center"
+                    android:orientation="vertical" >
 
-                    <LinearLayout
-                        android:id="@+id/lay_lin_chexian"
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/ic_btn_chexian" />
+
+                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:gravity="center_horizontal"
-                        android:orientation="vertical" >
-
-                        <ImageView
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
-                            android:src="@drawable/ic_btn_chexian" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="我的车险"
-                            android:textColor="#000"
-                            android:textSize="16sp" />
-                    </LinearLayout>
-                </RelativeLayout>
+                        android:text="我的车险"
+                        android:textColor="#000"
+                        android:textSize="16sp" />
+                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
 
@@ -220,7 +204,7 @@
             android:layout_width="90dp"
             android:layout_height="90dp"
             android:layout_gravity="center"
-            android:background="@drawable/bg_btn_main_jiehuo"
+            android:background="@drawable/selector_main_jiehuo"
             android:text="我要接活"
             android:textColor="#000"
             android:textSize="16sp" />

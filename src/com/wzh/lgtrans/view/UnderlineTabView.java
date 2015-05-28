@@ -65,6 +65,9 @@ public class UnderlineTabView extends View implements OnTouchListener{
 		addTitle("历史货单");
 	}
 
+	public void setOnChangeListener(OnChangeListener listenr){
+		onChangeListener=listenr;
+	}
 	public void addTitle(String title) {
 		titleList.add(title);
 	}
@@ -118,10 +121,14 @@ public class UnderlineTabView extends View implements OnTouchListener{
 			break;
 		case MotionEvent.ACTION_UP:
 			if(Math.abs(posX-posTempX)<10&&Math.abs(posY-posTempY)<10){
-				curSelect=(int) (posX/unitWidth);
-				invalidate();
-				if(onChangeListener!=null){
-					onChangeListener.onChange(curSelect);
+				
+				int pos=(int) (posX/unitWidth);
+				if(curSelect!=pos){
+					curSelect=pos;
+					invalidate();
+					if(onChangeListener!=null){
+						onChangeListener.onChange(curSelect);
+					}
 				}
 			}
 			break;

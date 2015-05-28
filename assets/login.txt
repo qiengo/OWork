@@ -1,0 +1,10 @@
+﻿{
+	"result":"1",
+    "info": {
+        "name": "刘先生",
+        "img": "http://192.167.0",
+        "identified":"1",
+        "phone":"15863432597",
+        "token":"HSDH7D987HD9H6SD"
+    }
+}
