@@ -49,14 +49,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
 
-        <com.wzh.lgtrans.view.SmoothViewPager
+        <com.wzh.lib.view.SmoothViewPager
             android:id="@+id/svp_ads"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#f00"
             app:autoSwitch="false" />
 
-        <com.wzh.lgtrans.view.InfiniteCircleIndicator
+        <com.wzh.lib.view.InfiniteCircleIndicator
             android:id="@+id/svp_indicator"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

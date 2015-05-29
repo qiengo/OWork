@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import com.wzh.lgtrans.R;
 import com.wzh.lgtrans.dialog.CarTypeDialog;
-import com.wzh.lgtrans.struct.IdName;
+import com.wzh.lib.struct.IdName;
 
 public class Register2Activity extends ActionBarBaseActivity {
 

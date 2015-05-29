@@ -10,8 +10,8 @@ import android.provider.MediaStore;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.wzh.lgtrans.AppConfig;
 import com.wzh.lgtrans.R;
+import com.wzh.lib.AppConfig;
 
 public class PicUploadActivity extends ActionBarBaseActivity {
 

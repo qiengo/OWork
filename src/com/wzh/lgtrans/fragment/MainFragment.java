@@ -20,7 +20,6 @@ import android.widget.FrameLayout;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.wzh.lgtrans.AppConfig;
 import com.wzh.lgtrans.MyVolley;
 import com.wzh.lgtrans.R;
 import com.wzh.lgtrans.activity.InviteActivity;
@@ -28,11 +27,12 @@ import com.wzh.lgtrans.activity.JieHuoActivity;
 import com.wzh.lgtrans.activity.LoginActivity;
 import com.wzh.lgtrans.activity.MyHuodanActivity;
 import com.wzh.lgtrans.activity.PicUploadActivity;
-import com.wzh.lgtrans.adapter.ImgPagerAdapter;
-import com.wzh.lgtrans.struct.RemoteImg;
-import com.wzh.lgtrans.util.IOUtils;
-import com.wzh.lgtrans.view.InfiniteCircleIndicator;
-import com.wzh.lgtrans.view.SmoothViewPager;
+import com.wzh.lib.AppConfig;
+import com.wzh.lib.adapter.ImgPagerAdapter;
+import com.wzh.lib.struct.RemoteImg;
+import com.wzh.lib.util.IOUtils;
+import com.wzh.lib.view.InfiniteCircleIndicator;
+import com.wzh.lib.view.SmoothViewPager;
 
 /**
  * 购物车界面的fragment

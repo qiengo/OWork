@@ -9,7 +9,7 @@ import android.widget.TextView;
 import com.wzh.lgtrans.R;
 import com.wzh.lgtrans.adapter.JieHuoAdapter;
 import com.wzh.lgtrans.dialog.CityPickerDialog;
-import com.wzh.lgtrans.struct.IdName;
+import com.wzh.lib.struct.IdName;
 
 public class JieHuoActivity extends ActionBarBaseActivity {
 	private ListView listView;

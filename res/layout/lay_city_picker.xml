@@ -6,7 +6,7 @@
     android:gravity="center"
     android:orientation="horizontal" >
 
-    <com.wzh.lgtrans.view.ScrollerPicker
+    <com.wzh.lib.view.ScrollerPicker
         android:id="@+id/province"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -23,7 +23,7 @@
         wzh:selecredTextSize="18sp"
         wzh:unitHight="40dp" />
 
-    <com.wzh.lgtrans.view.ScrollerPicker
+    <com.wzh.lib.view.ScrollerPicker
         android:id="@+id/city"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -40,7 +40,7 @@
         wzh:selecredTextSize="18sp"
         wzh:unitHight="40dp" />
 
-    <com.wzh.lgtrans.view.ScrollerPicker
+    <com.wzh.lib.view.ScrollerPicker
         android:id="@+id/couny"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

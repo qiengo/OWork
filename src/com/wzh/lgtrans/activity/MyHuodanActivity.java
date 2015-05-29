@@ -19,13 +19,13 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.wzh.lgtrans.AppConfig;
 import com.wzh.lgtrans.MyVolley;
 import com.wzh.lgtrans.R;
 import com.wzh.lgtrans.adapter.HuodanAdapter;
 import com.wzh.lgtrans.struct.HuodanInfo;
-import com.wzh.lgtrans.util.IOUtils;
-import com.wzh.lgtrans.view.UnderlineTabView;
+import com.wzh.lib.AppConfig;
+import com.wzh.lib.util.IOUtils;
+import com.wzh.lib.view.UnderlineTabView;
 
 public class MyHuodanActivity extends ActionBarBaseActivity {
 	private final String huodanUrl = AppConfig.SERVER_HOST + "/wzh/huodan.txt";

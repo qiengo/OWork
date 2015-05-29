@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 import com.wzh.lgtrans.R;
 import com.wzh.lgtrans.dialog.CityPickerDialog;
-import com.wzh.lgtrans.struct.IdName;
+import com.wzh.lib.struct.IdName;
 
 /**
  * 分类列表的适配器

@@ -9,11 +9,11 @@ import android.util.Log;
 import android.view.View;
 
 import com.wzh.lgtrans.R;
-import com.wzh.lgtrans.struct.IdName;
-import com.wzh.lgtrans.util.JsonUtil;
-import com.wzh.lgtrans.view.ScrollerAdapter;
-import com.wzh.lgtrans.view.ScrollerPicker;
-import com.wzh.lgtrans.view.ScrollerPicker.OnSelectListener;
+import com.wzh.lib.struct.IdName;
+import com.wzh.lib.util.JsonUtil;
+import com.wzh.lib.view.ScrollerAdapter;
+import com.wzh.lib.view.ScrollerPicker;
+import com.wzh.lib.view.ScrollerPicker.OnSelectListener;
 
 public class CityPickerDialog extends Dialog {
 	private static final String TAG = "CityPickerDialog";
